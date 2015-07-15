@@ -1,0 +1,8 @@
+*.swp
+**/*.swp
+*~
+**/*~
+node_modules/*
+public/lib/*
+*.log
+**/*.log
