@@ -31,7 +31,8 @@ module.exports = {
 		css: [
 			'public/modules/**/css/*.css',
 			'public/css/simple-sidebar.css',
-			'public/css/styles.css'
+			'public/css/styles.css',
+			'public/css/signin.css'
 		],
 		js: [
 			'public/config.js',
