@@ -13,6 +13,8 @@ module.exports = function(app) {
 		.get(items.read)
 		.put(users.requiresLogin, items.hasAuthorization, items.update)
 		.delete(users.requiresLogin, items.hasAuthorization, items.delete);
+	app.route('/items/:itemId/checkOut')
+		.put(users.requiresLogin, items.hasAuthorization, items.checkOut);
 
 	// Finish by binding the Item middleware
 	app.param('itemId', items.itemByID);

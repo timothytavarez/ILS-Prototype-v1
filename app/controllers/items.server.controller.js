@@ -85,6 +85,32 @@ exports.list = function(req, res) {
 };
 
 /**
+ * Check out an Item
+ */
+exports.checkOut = function(req, res) {
+	var item = req.item;
+	var user = req.user;
+	// item = _.extend(item , req.body);
+	if( mongoose.Schema.Types.ObjectId.isValid(item.checkedOutBy) )
+	{
+		return res.status(403).send({ 
+			message: 'Item is already checked out'
+		});
+	}
+
+
+	item.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(item);
+		}
+	});
+};
+
+/**
  * Item middleware
  */
 exports.itemByID = function(req, res, next, id) { 

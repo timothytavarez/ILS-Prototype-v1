@@ -50,9 +50,18 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 		$scope.update = function() {
 			var item = $scope.item;
 
-			console.log('client side - my object: %o', item);
 			item.$update(function() {
 				$location.path('items/' + item._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		$scope.checkOut = function() {
+			var item = $scope.item;
+
+			item.$checkOut(function() {
+				$location.path('items/' + item._id + '/checkOut');
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
