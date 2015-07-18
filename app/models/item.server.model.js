@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 var ItemSchema = new Schema({
 	itemType: {
 		type: String,
-		trime: true,
+		trim: true,
 		required: 'Please select Item type',
 	},
 	title: {
@@ -26,7 +26,12 @@ var ItemSchema = new Schema({
 	pub: String,
 	pubDate: Date,
 	image: {},
-
+	checkedOutBy: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
+	checkoutDate: Date,
+	dueDate: Date,
 	created: {
 		type: Date,
 		default: Date.now
