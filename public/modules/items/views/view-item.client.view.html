@@ -5,15 +5,22 @@
 
 	<div class="pull-right">
     <div class="list-group">
-			<label class="control-label" for="title">Type</label>
+			<label class="control-label" >Type</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.itemType"></h4>
-			<label class="control-label" for="title">Title</label>
+			<label class="control-label" >Title</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.title"></h4>
-			<label class="control-label" for="title">Author</label>
+			<label class="control-label" >Author</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.author"></h4>
-			<label class="control-label" for="title">Description</label>
+			<label class="control-label" >Description</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.desc"></h4>
+			<div data-ng-show="item.isCheckedOut">
+				<label class="control-label" >Checked Out By</label>
+				<a href="/#!/users/{{item.checkedOutBy}}"><h4 data-ng-bind="item.checkedOutBy"></h4></a>
+			</div>
     </div>
+		<a data-ng-hide="item.isCheckedOut" class="btn btn-primary" data-ng-click="checkOut();">
+			<i class="glyphicon glyphicon-check"></i>
+		</a>
 		<a class="btn btn-primary" href="/#!/items/{{item._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>

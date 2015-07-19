@@ -91,13 +91,24 @@ exports.checkOut = function(req, res) {
 	var item = req.item;
 	var user = req.user;
 	// item = _.extend(item , req.body);
-	if( mongoose.Schema.Types.ObjectId.isValid(item.checkedOutBy) )
+	if( item.isCheckedOut )
 	{
 		return res.status(403).send({ 
 			message: 'Item is already checked out'
 		});
 	}
-
+	else {
+		item.isCheckedOut = true;
+		item.checkedOutBy = user._id;
+		item.checkOutDate = Date.now;
+		item.dueDate = Date.now;
+		
+		//We will have to remove the hardcoding here and 
+		//set the due date based on the library configurations
+		//For now it is due 1 month later
+		item.dueDate.setMonthl( item.checkOutDate.getMonth() + 1 );
+		//we should also look into a library for date manipulations
+	}
 
 	item.save(function(err) {
 		if (err) {

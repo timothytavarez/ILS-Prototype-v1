@@ -26,6 +26,10 @@ var ItemSchema = new Schema({
 	pub: String,
 	pubDate: Date,
 	image: {},
+	isCheckedOut: {
+		type: Boolean,
+		default: false
+	},
 	checkedOutBy: {
 		type: Schema.ObjectId,
 		ref: 'User'
