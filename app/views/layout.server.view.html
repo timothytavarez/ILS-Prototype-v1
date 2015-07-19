@@ -98,14 +98,14 @@
 
 	<!-- Elev.io script -->
 	<script >
-		if (authentication.user) {
+		// if ($scope.showLayout) {
 			var _elev = window._elev || {};(function() {
 				var i,e;
 				i=document.createElement("script"),i.type='text/javascript';
 				i.async=1,i.src="https://static.elev.io/js/v3.js",e=document.getElementsByTagName("script")[0],e.parentNode.insertBefore(i,e);
 			})();
 			_elev.account_id = '559176030069b';
-		}
+		//}
 	</script>
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
