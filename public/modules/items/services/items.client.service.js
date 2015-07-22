@@ -10,7 +10,7 @@ angular.module('items').factory('Items', ['$resource',
 			},
 			checkOut: {
 				method: 'PUT',
-				url: 'items/:itemID/checkOut'
+				url: 'items/:itemId/checkOut'
 			}
 		});
 	}

@@ -101,13 +101,9 @@ exports.checkOut = function(req, res) {
 		item.isCheckedOut = true;
 		item.checkedOutBy = user._id;
 		item.checkOutDate = Date.now;
-		item.dueDate = Date.now;
-		
-		//We will have to remove the hardcoding here and 
-		//set the due date based on the library configurations
-		//For now it is due 1 month later
-		item.dueDate.setMonthl( item.checkOutDate.getMonth() + 1 );
-		//we should also look into a library for date manipulations
+		var localDueDate = new Date();
+		localDueDate.setMonth( localDueDate.getMonth() + 1 );
+		item.dueDate = new Date(localDueDate.toISOString());
 	}
 
 	item.save(function(err) {
