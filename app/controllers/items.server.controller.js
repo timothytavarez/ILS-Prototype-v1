@@ -90,7 +90,7 @@ exports.list = function(req, res) {
 exports.checkOut = function(req, res) {
 	var item = req.item;
 	var user = req.user;
-	// item = _.extend(item , req.body);
+
 	if( item.isCheckedOut )
 	{
 		return res.status(403).send({ 
@@ -104,17 +104,48 @@ exports.checkOut = function(req, res) {
 		var localDueDate = new Date();
 		localDueDate.setMonth( localDueDate.getMonth() + 1 );
 		item.dueDate = new Date(localDueDate.toISOString());
-	}
 
-	item.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(item);
-		}
-	});
+		item.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(item);
+			}
+		});
+	}
+};
+
+/**
+ * Check in an Item
+ */
+exports.checkIn = function(req, res) {
+	var item = req.item;
+	var user = req.user;
+
+	if( !item.isCheckedOut )
+	{
+		return res.status(403).send({ 
+			message: 'Item is already checked in'
+		});
+	}
+	else {
+		item.isCheckedOut = false;
+		item.checkedOutBy = undefined;
+		item.checkOutDate = undefined;
+		item.dueDate = undefined;
+
+		item.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(item);
+			}
+		});
+	}
 };
 
 /**

@@ -11,7 +11,12 @@ angular.module('items').factory('Items', ['$resource',
 			checkOut: {
 				method: 'PUT',
 				url: 'items/:itemId/checkOut'
+			},
+			checkIn: {
+				method: 'PUT',
+				url: 'items/:itemId/checkIn'
 			}
+
 		});
 	}
 ]);

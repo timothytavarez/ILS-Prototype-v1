@@ -67,6 +67,16 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			});
 		};
 
+		$scope.checkIn = function() {
+			var item = $scope.item;
+
+			item.$checkIn(function() {
+				$location.path('items/' + item._id + '/checkIn');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
 		// Find a list of Items
 		$scope.find = function() {
 			$scope.items = Items.query();

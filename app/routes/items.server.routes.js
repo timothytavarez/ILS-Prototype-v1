@@ -15,6 +15,8 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, items.hasAuthorization, items.delete);
 	app.route('/items/:itemId/checkOut')
 		.put(users.requiresLogin, items.hasAuthorization, items.checkOut);
+	app.route('/items/:itemId/checkIn')
+		.put(users.requiresLogin, items.hasAuthorization, items.checkIn);
 
 	// Finish by binding the Item middleware
 	app.param('itemId', items.itemByID);

@@ -3,7 +3,7 @@
 		<h1 data-ng-bind="item.title"></h1>
 	</div>
 
-	<div class="pull-right">
+	<div ><!-- class="pull&#45;right" -->
     <div class="list-group">
 			<label class="control-label" >Type</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.itemType"></h4>
@@ -14,12 +14,14 @@
 			<label class="control-label" >Description</label>
 			<h4 class="list-group-item-heading" data-ng-bind="item.desc"></h4>
 			<div data-ng-show="item.isCheckedOut">
-				<label class="control-label" >Checked Out By</label>
-				<a href="/#!/users/{{item.checkedOutBy}}"><h4 data-ng-bind="item.checkedOutBy"></h4></a>
+				<label class="control-label" >Item is Checked Out</label>
 			</div>
     </div>
 		<a data-ng-hide="item.isCheckedOut" class="btn btn-primary" data-ng-click="checkOut();">
-			<i class="glyphicon glyphicon-check"></i>
+			<i class="glyphicon glyphicon-chevron-up"></i>
+		</a>
+		<a data-ng-show="item.isCheckedOut" class="btn btn-primary" data-ng-click="checkIn();">
+			<i class="glyphicon glyphicon-chevron-down"></i>
 		</a>
 		<a class="btn btn-primary" href="/#!/items/{{item._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
@@ -28,12 +30,12 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="item.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="item.user.displayName"></span>
-		</em>
-	</small>
+	<!-- <small> -->
+	<!-- 	<em class="text&#45;muted"> -->
+	<!-- 		Posted on -->
+	<!-- 		<span data&#45;ng&#45;bind="item.created | date:'mediumDate'"></span> -->
+	<!-- 		by -->
+	<!-- 		<span data&#45;ng&#45;bind="item.user.displayName"></span> -->
+	<!-- 	</em> -->
+	<!-- </small> -->
 </section>
