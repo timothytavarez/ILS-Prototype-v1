@@ -15,6 +15,14 @@ angular.module('items').factory('Items', ['$resource',
 			checkIn: {
 				method: 'PUT',
 				url: 'items/:itemId/checkIn'
+			},
+			renew: {
+				method: 'PUT',
+				url: 'items/:itemId/renew'
+			},
+			hold: {
+				method: 'PUT',
+				url: 'items/:itemId/hold'
 			}
 
 		});

@@ -26,6 +26,14 @@ var ItemSchema = new Schema({
 	pub: String,
 	pubDate: Date,
 	image: {},
+	isOnHold: {
+		type: Boolean,
+		default: false
+	},
+	heldFor: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
 	isCheckedOut: {
 		type: Boolean,
 		default: false
@@ -39,7 +47,7 @@ var ItemSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
-	},
+	}
 });
 
 mongoose.model('Item', ItemSchema);

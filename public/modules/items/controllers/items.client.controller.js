@@ -67,13 +67,33 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			});
 		};
 
-		$scope.checkIn = function() {
+		$scope.checkin = function() {
 			var item = $scope.item;
 
-			item.$checkIn(function() {
-				$location.path('items/' + item._id + '/checkIn');
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+			item.$checkin(function() {
+				$location.path('items/' + item._id + '/checkin');
+			}, function(errorresponse) {
+				$scope.error = errorresponse.data.message;
+			});
+		};
+
+		$scope.renew = function() {
+			var item = $scope.item;
+
+			item.$renew(function() {
+				$location.path('items/' + item._id + '/renew');
+			}, function(errorresponse) {
+				$scope.error = errorresponse.data.message;
+			});
+		};
+
+		$scope.hold = function() {
+			var item = $scope.item;
+
+			item.$hold(function() {
+				$location.path('items/' + item._id + '/hold');
+			}, function(errorresponse) {
+				$scope.error = errorresponse.data.message;
 			});
 		};
 

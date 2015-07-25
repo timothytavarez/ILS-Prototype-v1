@@ -90,11 +90,16 @@ exports.list = function(req, res) {
 exports.checkOut = function(req, res) {
 	var item = req.item;
 	var user = req.user;
-
-	if( item.isCheckedOut )
+	if( item.isOnHold && item.heldFor !== user )
 	{
 		return res.status(403).send({ 
-			message: 'Item is already checked out'
+			message: 'Unable to check out - Item is item is being held for someone else'
+		});
+	} 
+	else if( item.isCheckedOut )
+	{
+		return res.status(403).send({ 
+			message: 'Unable to check out - Item is already checked out'
 		});
 	}
 	else {
@@ -127,7 +132,7 @@ exports.checkIn = function(req, res) {
 	if( !item.isCheckedOut )
 	{
 		return res.status(403).send({ 
-			message: 'Item is already checked in'
+			message: 'Unable to check in - Item is already checked in'
 		});
 	}
 	else {
@@ -135,6 +140,74 @@ exports.checkIn = function(req, res) {
 		item.checkedOutBy = undefined;
 		item.checkOutDate = undefined;
 		item.dueDate = undefined;
+
+		item.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(item);
+			}
+		});
+	}
+};
+
+/**
+ * Renew an Item
+ */
+exports.renew = function(req, res) {
+	var item = req.item;
+	var user = req.user;
+
+	if( !item.isCheckedOut ) {
+		return res.status(403).send({ 
+			message: 'Unable to renew - Item has not been checked out'
+		});
+	}
+	else if( item.isOnHold ) {
+		return res.status(403).send({ 
+			message: 'Unable to renew - Item has been put on hold'
+		});
+	}
+	else if( user !== item.checkedOutBy ){
+		return res.status(403).send({ 
+			message: 'Unable to renew - You cannot renew an item you did not check out'
+		});
+	}
+	else {
+		//Extends due date out another month
+		var localDueDate = new Date(item.dueDate.toDateString());
+		localDueDate.setMonth( localDueDate.getMonth() + 1 );
+		item.dueDate = new Date(localDueDate.toISOString());
+
+		item.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(item);
+			}
+		});
+	}
+};
+
+/**
+ * Hold an item
+ */
+exports.hold = function(req, res) {
+	var item = req.item;
+	var user = req.user;
+
+	if( item.isOnHold ) {
+		return res.status(403).send({ 
+			message: 'Unable to hold - Item has already been put on hold'
+		});
+	}
+	else {
+		item.isOnHold = true;
+		item.heldFor = user;
 
 		item.save(function(err) {
 			if (err) {
