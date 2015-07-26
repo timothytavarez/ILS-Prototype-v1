@@ -24,7 +24,7 @@ var RoleSchema = new Schema({
   checkIn: Boolean,
   sell: Boolean,
   forceCheckout: Boolean, // Allow checkout if a limitation exists
-  forceRenewal: Boolean, // Allow renewal if a limiation exists
+  forceRenewal: Boolean, // Allow renewal if a limitation exists
   forceReserve: Boolean,
   forceSell: Boolean,
   editReservePriority: Boolean,
@@ -42,7 +42,8 @@ var RoleSchema = new Schema({
   emailPatron: Boolean,
   manageCirculationRules: Boolean,
   manageNotificationRules: Boolean, // Triggers & notice message
-  editStaffPermission: Boolean,
+  editStaffAccounts: Boolean, // Includes permissions
+  viewStaffAccounts: Boolean,
   viewLogs: Boolean,
   exportLogs: Boolean,
   viewReports: Boolean,
@@ -87,7 +88,7 @@ var RoleSchema = new Schema({
   // Patron
   patronLogin: Boolean,
   reserve: Boolean,
-  search: Boolean
-});
+  search: Boolean,
 
-mongoose.model('Role', RoleSchema);
+  user: {type: Schema.ObjectId, ref: 'User'} // assuming you name your model User
+});
