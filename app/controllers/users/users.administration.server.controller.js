@@ -12,7 +12,8 @@ var mongoose = require('mongoose'),
  * Show the current User
  */
 exports.read = function(req, res) {
-  res.jsonp(req.user);
+  console.log("1");
+  res.jsonp(req.foundUser);
 };
 
 /**
@@ -53,10 +54,20 @@ exports.list = function(req, res) {
  * User middleware
  */
 exports.userByID = function(req, res, next, id) {
-  User.findById(id).populate('user', 'displayName').exec(function(err, user) {
+  console.log("2");
+  User.findById(id).exec(function(err, user) {
     if (err) return next(err);
     if (! user) return next(new Error('Failed to load User ' + id));
-    req.user = user ;
+    req.foundUser = {
+      _id: user._id,
+      username: user.username,
+      roles: user.roles,
+      created: user.created,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName
+    }
+
     next();
   });
 };

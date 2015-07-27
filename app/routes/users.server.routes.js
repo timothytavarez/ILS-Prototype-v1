@@ -54,7 +54,7 @@ module.exports = function(app) {
 
 	// Setting the administration routes
 	app.route('/users').get(users.list);
-	app.route('/users/:userID')
+	app.route('/users/:userId')
 		.get(users.requiresLogin, users.hasAuthorization, users.read)
 		.put(users.requiresLogin, users.hasAuthorization, users.update);
 
