@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Item = mongoose.model('Item'),
+	User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
@@ -230,8 +231,8 @@ exports.hold = function(req, res) {
 exports.itemByID = function(req, res, next, id) { 
 	var populateQuery = [
 		{path:'displayName'}, 
-		{path:'heldFor', select:'_id username email lastName firstName'}, 
-		{path:'checkedOutBy', select:'_id username email lastName firstName'}
+		{path:'heldFor', select: User.whitelistedFields()},
+		{path:'checkedOutBy', select: User.whitelistedFields()}
 	];
 	Item.findById(id).populate(populateQuery).exec(function(err, item) {
 		if (err) return next(err);

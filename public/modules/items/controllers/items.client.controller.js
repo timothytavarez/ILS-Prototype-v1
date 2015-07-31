@@ -22,7 +22,7 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 				return false;
 			}
 			else if( $scope.item.isOnHold && $scope.item.heldFor._id !== $scope.authentication.user._id ) {
-				return false 
+				return false;
 			}
 			return true;
 		};
