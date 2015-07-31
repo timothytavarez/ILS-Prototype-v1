@@ -138,4 +138,8 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 	});
 };
 
+UserSchema.statics.whitelistedFields = function() {
+	return '_id username email lastName firstName';
+};
+
 mongoose.model('User', UserSchema);
