@@ -10,3 +10,5 @@ angular.module('core').controller('LayoutController', ['$scope', 'Authentication
 		$scope.showLayout = $location.path() !== '/signin';
 	}
 ]);
+
+
