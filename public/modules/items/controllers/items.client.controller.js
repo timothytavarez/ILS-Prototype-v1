@@ -5,6 +5,36 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 	function($scope, $stateParams, $location, Authentication, Items) {
 		$scope.authentication = Authentication;
 
+		$scope.canHold = function() {
+			if( $scope.item.isOnHold ) {
+				return false;
+			}
+
+			else if ( $scope.item.checkedOutBy === undefined ) {
+				return true;
+			}
+
+			return false;
+		};
+
+		$scope.canCheckOut = function() {
+			if( $scope.item.isCheckedOut ) {
+				return false;
+			}
+			else if( $scope.item.isOnHold && $scope.item.heldFor._id !== $scope.authentication.user._id ) {
+				return false;
+			}
+			return true;
+		};
+
+		$scope.canCheckIn = function() {
+			return $scope.item.isCheckedOut && $scope.authentication.user._id === $scope.item.checkedOutBy._id;
+		};
+
+		$scope.canRenew = function() {
+			return $scope.item.isCheckedOut && $scope.authentication.user._id === $scope.item.checkedOutBy._id && !$scope.item.isOnHold;
+		};
+
 		// Create new Item
 		$scope.create = function() {
 			// Create new Item object
@@ -67,10 +97,10 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			});
 		};
 
-		$scope.checkin = function() {
+		$scope.checkIn = function() {
 			var item = $scope.item;
-
-			item.$checkin(function() {
+			console.log('1');
+			item.$checkIn(function() {
 				$location.path('items/' + item._id + '/checkin');
 			}, function(errorresponse) {
 				$scope.error = errorresponse.data.message;

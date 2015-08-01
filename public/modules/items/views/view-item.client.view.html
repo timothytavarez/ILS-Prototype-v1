@@ -17,18 +17,21 @@
 				<label class="control-label" >Item is Checked Out</label>
 			</div>
     </div>
-		<a data-ng-hide="item.isCheckedOut" class="btn btn-primary" data-ng-click="checkOut();">
-			<i class="glyphicon glyphicon-chevron-up"></i>
-		</a>
-		<a data-ng-show="item.isCheckedOut" class="btn btn-primary" data-ng-click="checkIn();">
-			<i class="glyphicon glyphicon-chevron-down"></i>
-		</a>
-		<a class="btn btn-primary" href="/#!/items/{{item._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
+
+		<a ng-if="canHold()" data-ng-click="hold()">Place On Hold</a><br>
+		<a ng-if="canCheckOut()" data-ng-click="checkOut();">Check Out</a><br>
+		<a ng-if="canCheckIn()"  data-ng-click="checkIn();">Check In</a><br>
+		<a ng-if="canRenew()"  data-ng-click="renew();">Renew Book</a><br>
+	
+		<a class="btn btn-primary" ng-href="/#!/items/{{item._id}}/edit">
+			<span class="glyphicon glyphicon-edit"></span>
 		</a>
 		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
+			<span class="glyphicon glyphicon-trash"></span>
 		</a>
+	</div>
+	<div data-ng-show="error" class="text-center text-danger">
+		<strong data-ng-bind="error"></strong>
 	</div>
 	<!-- <small> -->
 	<!-- 	<em class="text&#45;muted"> -->

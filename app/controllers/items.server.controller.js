@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Item = mongoose.model('Item'),
+	User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
@@ -90,7 +91,8 @@ exports.list = function(req, res) {
 exports.checkOut = function(req, res) {
 	var item = req.item;
 	var user = req.user;
-	if( item.isOnHold && item.heldFor !== user )
+
+	if( item.isOnHold && !item.heldFor._id.equals(user._id) )
 	{
 		return res.status(403).send({ 
 			message: 'Unable to check out - Item is item is being held for someone else'
@@ -103,6 +105,8 @@ exports.checkOut = function(req, res) {
 		});
 	}
 	else {
+		item.isOnHold = false;
+		item.heldFor = undefined;
 		item.isCheckedOut = true;
 		item.checkedOutBy = user._id;
 		item.checkOutDate = Date.now;
@@ -170,7 +174,7 @@ exports.renew = function(req, res) {
 			message: 'Unable to renew - Item has been put on hold'
 		});
 	}
-	else if( user !== item.checkedOutBy ){
+	else if( !user._id.equals(item.checkedOutBy) ){
 		return res.status(403).send({ 
 			message: 'Unable to renew - You cannot renew an item you did not check out'
 		});
@@ -225,10 +229,16 @@ exports.hold = function(req, res) {
  * Item middleware
  */
 exports.itemByID = function(req, res, next, id) { 
-	Item.findById(id).populate('user', 'displayName').exec(function(err, item) {
+	var populateQuery = [
+		{path:'displayName'}, 
+		{path:'heldFor', select: User.whitelistedFields()},
+		{path:'checkedOutBy', select: User.whitelistedFields()}
+	];
+	Item.findById(id).populate(populateQuery).exec(function(err, item) {
 		if (err) return next(err);
 		if (! item) return next(new Error('Failed to load Item ' + id));
-		req.item = item ;
+
+		req.item = item;
 		next();
 	});
 };

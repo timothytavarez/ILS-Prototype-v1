@@ -68,13 +68,6 @@ var UserSchema = new Schema({
 	},
 	providerData: {},
 	additionalProvidersData: {},
-	roles: {
-		type: [{
-			type: String,
-			enum: ['user', 'admin']
-		}],
-		default: ['user']
-	},
 	updated: {
 		type: Date
 	},
@@ -88,7 +81,9 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	}
+	},
+
+	roles: [{type: Schema.ObjectId, ref: 'Role'}] // assuming you name your model Task
 });
 
 /**
@@ -141,6 +136,10 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 			callback(null);
 		}
 	});
+};
+
+UserSchema.statics.whitelistedFields = function() {
+	return '_id username email lastName firstName';
 };
 
 mongoose.model('User', UserSchema);

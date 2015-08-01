@@ -1,5 +1,7 @@
 *.swp
+*.sw*
 **/*.swp
+**/*.sw*
 *~
 **/*~
 node_modules/*
