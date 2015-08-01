@@ -16,6 +16,11 @@ var RoleSchema = new Schema({
 		required: true,
 		trim: true
 	},
+
+	desc: {
+		type: String,
+		trim: true
+	},
 	
 	created: { 
 		type: Date,
