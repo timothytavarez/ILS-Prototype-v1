@@ -64,4 +64,5 @@ angular.module('users').controller('RolesController', ['$scope', '$http', '$loca
 			});
 		};
 	}
+
 ]);
