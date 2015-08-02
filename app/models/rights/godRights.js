@@ -1,5 +1,5 @@
 exports = {
-	name: "testName",
+	name: 'testName',
 	rights: [
 		{name: 'editAllOrgs', desc: 'Add description here' },
 		{name: 'viewAllOrgs', desc: 'Add description here' },
