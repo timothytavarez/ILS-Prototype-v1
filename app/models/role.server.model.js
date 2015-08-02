@@ -1,4 +1,4 @@
-'use strict';
+'use strict';"
 
 /**
  * Module dependencies.
@@ -6,11 +6,29 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-/**
- * Role Schema
- */
-var RoleSchema = new Schema({
+// Method helper functions
+function UppercaseFirstLetter( str ) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
+function assignRight( right, rightsGroup ) {
+	rightsGroup[right] = true;
+	rightsGroup.markModified(right);
+}
+
+function unassignRight( right, rightsGroup ) {
+	rightsGroup[right] = undefined;
+	rightsGroup.markModified(right);
+}
+
+
+
+// which in turn loads all our rights javascript files
+var rightsGroups = require('./rights');
+
+// var roleMethods;
+var roleOptions;
+var roleObj = {
 	roleName: {
 		type: String,
 		required: true,
@@ -31,6 +49,47 @@ var RoleSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+};
+
+for (var group in rightsGroups) {
+	if (rightsGroups.hasOwnProperty(group)) {
+		
+		// Automatically fill out our roleObj with the rightsGroups found 
+		// in the ./rights directory.
+		// If the rightsGroup has a name specified(and it is a string) use it
+		if( rightsGroups[group].name && typeof(rightsGroups[group].name) === "string" ) {
+			roleObj[rightsGroups[group].name] = Schema.Types.Mixed;
+			roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;
+		}
+		// otherwise default to the file's name.
+		else {
+			roleObj[group] = Schema.Types.Mixed;
+			roleOptions[group] = rightsGroups[group].rights;
+		}
+	}
+}
+
+
+/**
+ * Role Schema
+ */
+var RoleSchema = new Schema( roleObj );
+//
+// Automatically fill out our roleStatic methods
+// These static methods will be used to get a list of all possible
+// rights there are to set for each rightsGroup.
+// Our front end entry forms will use these functions to fill
+// out the possible selections.
+//
+// roleStatics
+
+RoleSchema.statics.listAllOptions  = function()  {
+	return JSON.stringify(roleOptions);
+}
+
+	/*	
+		{
+
 
 
   // Muse Employee Rights
@@ -160,6 +219,8 @@ var RoleSchema = new Schema({
   // editVendor: Boolean,
 	// TODO: deletion Rights?
 });
+
+*/
 
 
 
