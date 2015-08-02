@@ -45,7 +45,10 @@
 <!-- ng&#45;show="$location.path() != '/signin'" -->
 
 <body class="ng-cloak" data-ng-controller="LayoutController">
+	<eeh-navigation-sidebar menu-name="foo"></eeh-navigation-sidebar>
+	
 	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
 
 	<!-- <div id="wrapper" data&#45;ng&#45;show="authentication.user"> -->
 	<!-- 	<div id="sidebar&#45;wrapper"> -->
