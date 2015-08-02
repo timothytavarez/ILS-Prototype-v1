@@ -3,17 +3,18 @@
   "version": "0.0.1",
   "description": "Modern SaaS Library Solution using the MEAN stack.",
   "dependencies": {
-    "bootstrap": "~3",
-    "angular": "~1.4",
-    "angular-resource": "~1.4",
-    "angular-mocks": "~1.4",
-    "angular-cookies": "~1.4",
-    "angular-animate": "~1.4",
-    "angular-touch": "~1.4",
-    "angular-sanitize": "~1.4",
-    "angular-bootstrap": "~0.13.0",
-    "angular-ui-utils": "~0.1.1",
-    "angular-ui-router": "~0.2.11",
     "eeh-navigation": "~4.1.2"
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.3",
+    "angular-animate": "~1.4.3",
+    "angular-cookies": "~1.4.3",
+    "angular-mocks": "~1.4.3",
+    "angular-resource": "~1.4.3",
+    "angular-sanitize": "~1.4.3",
+    "angular-touch": "~1.4.3",
+    "angular-bootstrap": "~0.13.1",
+    "angular-ui-router": "~0.2.15",
+    "angular-ui-utils": "~3.0.0",
+    "jquery": "~2.1.4"
   }
 }

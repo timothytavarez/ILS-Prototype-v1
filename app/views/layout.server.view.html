@@ -45,7 +45,9 @@
 <!-- ng&#45;show="$location.path() != '/signin'" -->
 
 <body class="ng-cloak" data-ng-controller="LayoutController">
+	
 	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
 
 
 	<div id="wrapper" data-ng-show="authentication.user">
@@ -55,7 +57,6 @@
 	</div>
 			
 	</div>
-
 
 	<section class="content">
 		<section class="container">
