@@ -170,3 +170,6 @@ RoleSchema.pre('save', function(next) {
 	this.updated = Date.now;
 	next();
 });
+
+
+mongoose.model('Role', RoleSchema);

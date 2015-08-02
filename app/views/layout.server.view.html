@@ -45,15 +45,14 @@
 <!-- ng&#45;show="$location.path() != '/signin'" -->
 
 <body class="ng-cloak" data-ng-controller="LayoutController">
-	<div id="eeh-sidebar-container">
-		<eeh-navigation-sidebar menu-name="'foo'" search-input-is-visible="true" topOffset=100>
-		</eeh-navigation-sidebar>
-	</div>
-
 	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 
-	<div id="wrapper" data-ng-show="authentication.user">
 
+	<div id="wrapper" data-ng-show="authentication.user">
+<div id="eeh-sidebar-container">
+		<eeh-navigation-sidebar menu-name="'foo'" search-input-is-visible="true">
+		</eeh-navigation-sidebar>
+	</div>
 			
 	</div>
 
