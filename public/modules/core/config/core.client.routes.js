@@ -13,5 +13,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', // 'Authe
 			url: '/',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
+		
+		$stateProvider.
+		state('sidebar', {
+			url: '/',
+			templateUrl: 'modules/core/views/sidebar.client.view.html'
+		});
 	}
 ]);

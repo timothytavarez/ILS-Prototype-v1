@@ -15,19 +15,18 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/font-awesome/css/font-awesome.css',
-				'public/lib/eeh-navigation/dist/eeh-navigation.css'
+				'public/lib/font-awesome/css/font-awesome.css'
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
 				'public/lib/angular-touch/angular-touch.js', 
-				'public/lib/angular-sanitize/angular-sanitize.js', 
+				'public/lib/angular-sanitize/angular-sanitize.js',
+				'public/lib/angular-translate/angular-translate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
-				'public/lib/eeh-navigation/dist/eeh-navigation.js',
-				'public/lib/eeh-navigation/dist/eeh-navigation.tpl.js',
 				'public/lib/angular-ui-utils/index.js',
 				'public/lib/angular-ui-scroll/dist/ui-scroll.js',
 				'public/lib/angular-ui-scrollpoint/dist/scrollpoint.js',
@@ -41,8 +40,7 @@ module.exports = {
 		},
 		css: [
 			'public/modules/**/css/*.css',
-			'public/css/simple-sidebar.css',
-			'public/css/styles.css',
+			'public/css/style.css',
 			'public/css/signin.css'
 		],
 		js: [
