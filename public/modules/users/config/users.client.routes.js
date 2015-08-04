@@ -5,6 +5,22 @@ angular.module('users').config(['$stateProvider',
   function($stateProvider) {
     // Users state routing
     $stateProvider.
+		state('view-role', {
+			url: '/rolesroleid',
+			templateUrl: 'modules/users/views/view-role.client.view.html'
+		}).
+		state('list-roles', {
+			url: '/roles',
+			templateUrl: 'modules/users/views/list-roles.client.view.html'
+		}).
+		state('edit-role', {
+			url: '/rolesroleid',
+			templateUrl: 'modules/users/views/edit-role.client.view.html'
+		}).
+		state('create-role', {
+			url: '/roles',
+			templateUrl: 'modules/users/views/create-role.client.view.html'
+		}).
       state('profile', {
         url: '/settings/profile',
         templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'

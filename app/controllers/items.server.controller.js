@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 /**
- * Create a Item
+ * Create an Item
  */
 exports.create = function(req, res) {
 	var item = new Item(req.body);

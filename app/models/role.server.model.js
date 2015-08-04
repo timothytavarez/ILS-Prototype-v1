@@ -47,6 +47,12 @@ var roleObj = {
 		type: Date,
 		default: Date.now
 	},
+
+	users: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
+		
 };
 var roleOptions = {};
 for (var group in rightsGroups) {
@@ -69,7 +75,7 @@ for (var group in rightsGroups) {
 // console.log('roleObj: ');
 // console.log(roleObj);
 // console.log('roleOptions: ');
-console.log(roleOptions);
+// console.log(roleOptions);
 
 /**
  * Role Schema
