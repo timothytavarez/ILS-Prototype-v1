@@ -18,8 +18,8 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.css'
 			],
 			js: [
-				'public/lib/jquery/dist/jquery.js',
 				'public/lib/angular/angular.js',
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
@@ -34,8 +34,7 @@ module.exports = {
 				'public/lib/angular-ui-mask/dist/mask.js',
 				'public/lib/angular-ui-validate/dist/validate.js',
 				'public/lib/angular-ui-indeterminate/dist/indeterminate.js',
-				'public/lib/angular-ui-uploader/dist/uploader.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-ui-uploader/dist/uploader.js'
 			]
 		},
 		css: [
