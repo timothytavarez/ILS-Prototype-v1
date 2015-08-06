@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 			}
 		},
 		browserify: {
-			'./public/modules/users/services/rights.client.bundle.js': ['./app/models/rights/*.js']
+			'./public/js/rights.client.bundle.js': ['./app/models/rights']
 		},
 		nodemon: {
 			dev: {
@@ -162,7 +162,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'browserify', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
