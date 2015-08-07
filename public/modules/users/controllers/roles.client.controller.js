@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('users').controller('RolesController', ['$scope', '$http', '$location', 'Authentication', 'Roles',
-	function($scope, $http, $location, Authentication, Roles) {
+angular.module('users').controller('RolesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Roles',
+	function($scope, $stateParams, $location, Authentication, Roles) {
 		$scope.authentication = Authentication;
 
 		// Create new Role
 		$scope.create = function() {
+			
 			// Create new Role object
-			var role = new Role ({
+			var role = new Roles ({
 				roleName: this.roleName,
 				desc: this.desc
 			});
@@ -17,7 +18,8 @@ angular.module('users').controller('RolesController', ['$scope', '$http', '$loca
 				$location.path('roles/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.roleName = '';
+				$scope.desc = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -29,7 +31,7 @@ angular.module('users').controller('RolesController', ['$scope', '$http', '$loca
 				role.$remove();
 
 				for (var i in $scope.roles) {
-					if ($scope.roles [i] === role) {
+					if ($scope.roles[i] === role) {
 						$scope.roles.splice(i, 1);
 					}
 				}
@@ -50,19 +52,17 @@ angular.module('users').controller('RolesController', ['$scope', '$http', '$loca
 				$scope.error = errorResponse.data.message;
 			});
 		};
-		
-		
+
 		// Find a list of Roles
 		$scope.find = function() {
 			$scope.roles = Roles.query();
 		};
 
-		// Find existing Roles
+		// Find existing Role
 		$scope.findOne = function() {
 			$scope.role = Roles.get({ 
 				roleId: $stateParams.roleId
 			});
 		};
 	}
-
 ]);

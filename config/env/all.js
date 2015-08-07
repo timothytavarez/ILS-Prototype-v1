@@ -11,6 +11,11 @@ module.exports = {
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
 	assets: {
+		browserify: {
+			js: [
+				'app/models/rights/*.js'
+			]
+		},
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',

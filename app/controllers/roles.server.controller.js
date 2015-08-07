@@ -3,21 +3,20 @@
 /**
  * Module dependencies.
  */
- var mongoose = require ('mongoose'),
-        errorHandler = require('./errors.server.controller'),
-        Role = mongoose.model('Role'),
-        User = mongoose.model('User'), // uh oh, why is this not registering?
+var mongoose = require('mongoose'),
+	errorHandler = require('./errors.server.controller'),
+	Role = mongoose.model('Role'),
+//	User = mongoose.model('User'),
 	_ = require('lodash');
-	
+
 /**
  * Create a Role
  */
 exports.create = function(req, res) {
-    var role = new Role(req.body);
-    
-    role.user = req.user;
-    
-    role.save(function(err) {
+	var role = new Role(req.body);
+	role.user = req.user;
+
+	role.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -38,12 +37,12 @@ exports.read = function(req, res) {
 /**
  * Update a Role
  */
- exports.update = function(req, res) {
-     var role = req.role;
-     
-     role = _.extend(role, req.body);
-     
-     	role.save(function(err) {
+exports.update = function(req, res) {
+	var role = req.role ;
+
+	role = _.extend(role , req.body);
+
+	role.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -55,11 +54,10 @@ exports.read = function(req, res) {
 };
 
 /**
- * Delete a Role
+ * Delete an Role
  */
 exports.delete = function(req, res) {
-	var role = req.item ;
-
+	var role = req.role ;
 	role.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -75,7 +73,7 @@ exports.delete = function(req, res) {
  * List of Roles
  */
 exports.list = function(req, res) { 
-	Role.find().sort('-created').populate('role', 'roleName').exec(function(err, roles) {
+	Role.find().sort('-created')/* .populate('user', 'displayname') */.exec(function(err, roles) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -90,10 +88,12 @@ exports.list = function(req, res) {
  * Role middleware
  */
 exports.roleByID = function(req, res, next, id) { 
-	var populateQuery = [
-		{path:'roleName'} 
-	];
-	Role.findById(id).populate(populateQuery).exec(function(err, role) {
+	// var populateQuery = [
+	// 	{path:'roleName'}, 
+	// 	{path:'heldFor', select: User.whitelistedFields()},
+	// 	{path:'checkedOutBy', select: User.whitelistedFields()}
+	// ];
+	Role.findById(id)/* .populate(populateQuery) */.exec(function(err, role) {
 		if (err) return next(err);
 		if (! role) return next(new Error('Failed to load Role ' + id));
 
