@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Modern SaaS Library Solution using the MEAN stack.",
   "dependencies": {
-    "eeh-navigation": "~4.1.2",
     "bootstrap": "~3.3.5",
     "angular": "~1.4.3",
     "angular-animate": "~1.4.3",

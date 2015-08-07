@@ -33,6 +33,8 @@ width: 250px;
 background: #333;
 color: white;
 height: 100vh;
+z-index: 1000;
+
 }
 
 .sidebar-nav {

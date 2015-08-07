@@ -19,6 +19,7 @@ module.exports = {
 			],
 			js: [
 				'public/lib/angular/angular.js',
+				'public/lib/angular-bootstrap/ui-bootstrap.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -35,6 +36,7 @@ module.exports = {
 				'public/lib/angular-ui-validate/dist/validate.js',
 				'public/lib/angular-ui-indeterminate/dist/indeterminate.js',
 				'public/lib/angular-ui-uploader/dist/uploader.js'
+			//	'public/lib/jquery/dist/jquery.js'
 			]
 		},
 		css: [
