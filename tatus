@@ -1,0 +1,557 @@
+[1mdiff --git a/.jshintrc b/.jshintrc[m
+[1mindex 4cd07cd..df18341 100644[m
+[1m--- a/.jshintrc[m
+[1m+++ b/.jshintrc[m
+[36m@@ -1,6 +1,7 @@[m
+ {[m
+ 	"node": true, // Enable globals available when code is running inside of the NodeJS runtime environment.[m
+ 	"browser": true, // Standard browser globals e.g. `window`, `document`.[m
+[32m+[m	[32m"browserify": true,[m[41m [m
+ 	"esnext": true, // Allow ES.next specific features such as `const` and `let`.[m
+ 	"bitwise": false, // Prohibit bitwise operators (&, |, ^, etc.).[m
+ 	"camelcase": false, // Permit only camelcase for `var` and `object indexes`.[m
+[36m@@ -39,4 +40,4 @@[m
+ 	"indent": 4, // Specify indentation spacing[m
+ 	"devel": true, // Allow development statements e.g. `console.log();`.[m
+ 	"noempty": true // Prohibit use of empty blocks.[m
+[31m-}[m
+\ No newline at end of file[m
+[32m+[m[32m}[m
+[1mdiff --git a/app/models/rights/baseAdminRights.js b/app/models/rights/baseAdminRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex ddab3ed..0000000[m
+[1m--- a/app/models/rights/baseAdminRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-exports.name = 'baseAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'manageNotificationRules', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgCalendar', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgAnnouncements', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgNews', desc: 'Add description here' },[m
+[31m-	{ name: 'editQuoteOfTheDay', desc: 'Add description here' },[m
+[31m-	{ name: 'schedulePatronNewsletter', desc: 'Add description here' },[m
+[31m-	{ name: 'emailPatron', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/baseBarcodeRights.js b/app/models/rights/baseBarcodeRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 723fe1e..0000000[m
+[1m--- a/app/models/rights/baseBarcodeRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'baseBarcodeRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createBarcode', desc: 'Add description here' },[m
+[31m-	{ name: 'editBarcode', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteBarcode', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/rights/baseCatalogRights.js b/app/models/rights/baseCatalogRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex df771af..0000000[m
+[1m--- a/app/models/rights/baseCatalogRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,8 +0,0 @@[m
+[31m-exports.name = 'baseCatalogRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemData', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemHolding', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemTag', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/rights/baseCircRights.js b/app/models/rights/baseCircRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 4c4fbc2..0000000[m
+[1m--- a/app/models/rights/baseCircRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'baseCircRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'checkOut', desc: 'Add description here' },[m
+[31m-	{ name: 'checkIn', desc: 'Add description here' },[m
+[31m-	{ name: 'renew', desc: 'Add description here' },[m
+[31m-	{ name: 'hold', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/baseLabelRights.js b/app/models/rights/baseLabelRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 359e04f..0000000[m
+[1m--- a/app/models/rights/baseLabelRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'baseLabelRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createLabel', desc: 'Add description here' },[m
+[31m-	{ name: 'editLabel', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteLabel', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/rights/basePatronAdminRights.js b/app/models/rights/basePatronAdminRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex a83301f..0000000[m
+[1m--- a/app/models/rights/basePatronAdminRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'basePatronAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'addPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'editPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'editPatronComments', desc: 'Add description here' },[m
+[31m-	{name: 'editPatronTags', desc: 'Add description here' },[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/basePatronAdmnRights.js b/app/models/rights/basePatronAdmnRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 9fa52ba..0000000[m
+[1m--- a/app/models/rights/basePatronAdmnRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'basePatronAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'addPatrons', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatrons', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatronComments', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatronTags', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/baseReportRights.js b/app/models/rights/baseReportRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 34bf91b..0000000[m
+[1m--- a/app/models/rights/baseReportRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-exports.name = 'baseReportRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'launchReports', desc: 'Add description here' },[m
+[31m-	{ name: 'viewReportResults', desc: 'Add description here' },[m
+[31m-	{ name: 'downloadReportResults', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/baseSerialRights.js b/app/models/rights/baseSerialRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 0533971..0000000[m
+[1m--- a/app/models/rights/baseSerialRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'baseSerialRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'editSubscribedSerials', desc: 'Add description here' },[m
+[31m-	{ name: 'viewSubscribedSerials', desc: 'Add description here' },[m
+[31m-	{ name: 'addMissingSerial', desc: 'Add description here' },[m
+[31m-	{ name: 'addReceivedSerials', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/extAdminRights.js b/app/models/rights/extAdminRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 5f0cdb7..0000000[m
+[1m--- a/app/models/rights/extAdminRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,9 +0,0 @@[m
+[31m-exports.name = 'extAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'editOrgSettings', desc: 'Add description here' },[m
+[31m-	{ name: 'scheduleStaffNewsletter', desc: 'Add description here' },[m
+[31m-	{ name: 'editStaffAccounts', desc: 'Add description here' },[m
+[31m-	{ name: 'viewStaffAccounts', desc: 'Add description here' },[m
+[31m-	{ name: 'viewLogs', desc: 'Add description here' },[m
+[31m-	{ name: 'exportLogs', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/extCatalogRights.js b/app/models/rights/extCatalogRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 639d1eb..0000000[m
+[1m--- a/app/models/rights/extCatalogRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'extCatalogRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'massEditCatalogHoldings', desc: 'Add description here' },[m
+[31m-	{ name: 'massEditCatalogItems', desc: 'Add description here' },[m
+[31m-	{ name: 'exportCatalog', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/rights/extCircRights.js b/app/models/rights/extCircRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 600808a..0000000[m
+[1m--- a/app/models/rights/extCircRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-exports.name = 'extCircRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'forceCheckout', desc: 'Add description here' },[m
+[31m-	{ name: 'forceRenewal', desc: 'Add description here' },[m
+[31m-	{ name: 'forceHold', desc: 'Add description here' },[m
+[31m-	{ name: 'editHoldPriority', desc: 'Add description here' },[m
+[31m-	{ name: 'manageRestrictions', desc: 'Add description here' },[m
+[31m-	{ name: 'generateOverdueReport', desc: 'Add description here' },[m
+[31m-	{ name: 'manageCircRules', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/extPatronAdminRights.js b/app/models/rights/extPatronAdminRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 99fa2a0..0000000[m
+[1m--- a/app/models/rights/extPatronAdminRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'extPatronRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'updateCharges', desc: 'Add description here' },[m
+[31m-	{name: 'writeOffCharges', desc: 'Add description here' },[m
+[31m-	{name: 'bulkImportPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'bulkEditPatrons', desc: 'Add description here' },[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/extReportRights.js b/app/models/rights/extReportRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 030b2b1..0000000[m
+[1m--- a/app/models/rights/extReportRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'extReportRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'importReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'exportReportTemplates', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/godRights.js b/app/models/rights/godRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 04309d4..0000000[m
+[1m--- a/app/models/rights/godRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-exports.name = 'godRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'editAllOrgs', desc: 'Add description here' },[m
+[31m-	{name: 'viewAllOrgs', desc: 'Add description here' },[m
+[31m-	{name: 'browseSystemItems', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/index.js b/app/models/rights/index.js[m
+[1mdeleted file mode 100644[m
+[1mindex efe488d..0000000[m
+[1m--- a/app/models/rights/index.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-'use strict';[m
+[31m-[m
+[31m-// Load `*.js` under current directory as properties[m
+[31m-//  i.e., `User.js` will become `exports['User']` or `exports.User`[m
+[31m-require('fs').readdirSync(__dirname + '/').forEach(function(file) {[m
+[31m-	if (file.match(/\.js$/) !== null && file !== 'index.js') {[m
+[31m-		var name = file.replace('.js', '');[m
+[31m-		exports[name] = require('./' + file);[m
+[31m-	}[m
+[31m-});[m
+[1mdiff --git a/app/models/rights/loginRights.js b/app/models/rights/loginRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 0ea7606..0000000[m
+[1m--- a/app/models/rights/loginRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-exports.name = 'loginRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'devLogin', desc: 'Add description here' },[m
+[31m-	{ name: 'staffLogin', desc: 'Add description here' },[m
+[31m-	{ name: 'patronLogin', desc: 'Add description here' }[m
+[31m-];[m
+[1mdiff --git a/app/models/rights/readBudgetRights.js b/app/models/rights/readBudgetRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex efa9088..0000000[m
+[1m--- a/app/models/rights/readBudgetRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-exports.name = 'readBudgetRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'viewBudget', desc: 'Add description here' },[m
+[31m-	{ name: 'viewBudgetItems', desc: 'Add description here' },[m
+[31m-	{ name: 'viewOrderReports', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/rights/writeBudgetRights.js b/app/models/rights/writeBudgetRights.js[m
+[1mdeleted file mode 100644[m
+[1mindex 77effd0..0000000[m
+[1m--- a/app/models/rights/writeBudgetRights.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,12 +0,0 @@[m
+[31m-exports.name = 'writeBudgetRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'receiveOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'addVendor', desc: 'Add description here' },[m
+[31m-	{ name: 'addOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'addBudgetItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'editBudget', desc: 'Add description here' },[m
+[31m-	{ name: 'editBudgetItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editVendor', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[1mdiff --git a/app/models/role.server.model.js b/app/models/role.server.model.js[m
+[1mindex ce58b8e..b1fabc3 100644[m
+[1m--- a/app/models/role.server.model.js[m
+[1m+++ b/app/models/role.server.model.js[m
+[36m@@ -22,8 +22,8 @@[m [mfunction unassignRight( right, rightsGroup ) {[m
+ }[m
+ [m
+ [m
+[31m-// which in turn loads all our rights javascript files[m
+[31m-var rightsGroups = require('./rights');[m
+[32m+[m[32mvar rights = require('../../common/rights');[m
+[32m+[m[32mvar rightsGroups = rights.files;[m
+ [m
+ // var roleMethods;[m
+ var roleObj = {[m
+[36m@@ -54,7 +54,7 @@[m [mvar roleObj = {[m
+ 	}][m
+ 		[m
+ };[m
+[31m-var roleOptions = {};[m
+[32m+[m[32m// var roleOptions = {};[m
+ for (var group in rightsGroups) {[m
+ 	if (rightsGroups.hasOwnProperty(group)) {[m
+ 		[m
+[36m@@ -63,12 +63,12 @@[m [mfor (var group in rightsGroups) {[m
+ 		// If the rightsGroup has a name specified(and it is a string) use it[m
+ 		if( rightsGroups[group].name && typeof(rightsGroups[group].name) === 'string' ) {[m
+ 			roleObj[rightsGroups[group].name] = Schema.Types.Mixed;[m
+[31m-			roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;[m
+[32m+[m			[32m// roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;[m
+ 		}[m
+ 		// otherwise default to the file's name.[m
+ 		else {[m
+ 			roleObj[group] = Schema.Types.Mixed;[m
+[31m-			roleOptions[group] = rightsGroups[group].rights;[m
+[32m+[m			[32m// roleOptions[group] = rightsGroups[group].rights;[m
+ 		}[m
+ 	}[m
+ }[m
+[36m@@ -83,9 +83,10 @@[m [mfor (var group in rightsGroups) {[m
+ var RoleSchema = new Schema( roleObj );[m
+ [m
+ [m
+[31m-RoleSchema.statics.listAllOptions  = function()  {[m
+[31m-	return JSON.stringify(roleOptions);[m
+[31m-};[m
+[32m+[m[32mRoleSchema.statics.allOptions = rights.all();[m
+[32m+[m[32m// function()  {[m
+[32m+[m[32m// 	return JSON.stringify(roleOptions);[m
+[32m+[m[32m// };[m
+ [m
+ /**[m
+  * Hook a pre save method to keep the updated property current[m
+[1mdiff --git a/gruntfile.js b/gruntfile.js[m
+[1mindex b6d4d5c..4d9d96e 100644[m
+[1m--- a/gruntfile.js[m
+[1m+++ b/gruntfile.js[m
+[36m@@ -83,7 +83,7 @@[m [mmodule.exports = function(grunt) {[m
+ 			}[m
+ 		},[m
+ 		browserify: {[m
+[31m-			'./public/js/rights.client.bundle.js': ['./app/models/rights'][m
+[32m+[m			[32m'./public/common/rights.client.bundle.js': ['./common/rights'][m
+ 		},[m
+ 		nodemon: {[m
+ 			dev: {[m
+[1mdiff --git a/public/js/rights.client.bundle.js b/public/js/rights.client.bundle.js[m
+[1mdeleted file mode 100644[m
+[1mindex 3ce413f..0000000[m
+[1m--- a/public/js/rights.client.bundle.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,190 +0,0 @@[m
+[31m-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){[m
+[31m-exports.name = 'baseAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'manageNotificationRules', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgCalendar', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgAnnouncements', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrgNews', desc: 'Add description here' },[m
+[31m-	{ name: 'editQuoteOfTheDay', desc: 'Add description here' },[m
+[31m-	{ name: 'schedulePatronNewsletter', desc: 'Add description here' },[m
+[31m-	{ name: 'emailPatron', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],2:[function(require,module,exports){[m
+[31m-exports.name = 'baseBarcodeRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createBarcode', desc: 'Add description here' },[m
+[31m-	{ name: 'editBarcode', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteBarcode', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],3:[function(require,module,exports){[m
+[31m-exports.name = 'baseCatalogRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemData', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemHolding', desc: 'Add description here' },[m
+[31m-	{ name: 'editItemTag', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],4:[function(require,module,exports){[m
+[31m-exports.name = 'baseCircRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'checkOut', desc: 'Add description here' },[m
+[31m-	{ name: 'checkIn', desc: 'Add description here' },[m
+[31m-	{ name: 'renew', desc: 'Add description here' },[m
+[31m-	{ name: 'hold', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],5:[function(require,module,exports){[m
+[31m-exports.name = 'baseLabelRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createLabel', desc: 'Add description here' },[m
+[31m-	{ name: 'editLabel', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteLabel', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],6:[function(require,module,exports){[m
+[31m-exports.name = 'basePatronAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'addPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'editPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'editPatronComments', desc: 'Add description here' },[m
+[31m-	{name: 'editPatronTags', desc: 'Add description here' },[m
+[31m-];[m
+[31m-[m
+[31m-},{}],7:[function(require,module,exports){[m
+[31m-exports.name = 'basePatronAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'addPatrons', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatrons', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatronComments', desc: 'Add description here' },[m
+[31m-	{ name: 'editPatronTags', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],8:[function(require,module,exports){[m
+[31m-exports.name = 'baseReportRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'launchReports', desc: 'Add description here' },[m
+[31m-	{ name: 'viewReportResults', desc: 'Add description here' },[m
+[31m-	{ name: 'downloadReportResults', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],9:[function(require,module,exports){[m
+[31m-exports.name = 'baseSerialRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'editSubscribedSerials', desc: 'Add description here' },[m
+[31m-	{ name: 'viewSubscribedSerials', desc: 'Add description here' },[m
+[31m-	{ name: 'addMissingSerial', desc: 'Add description here' },[m
+[31m-	{ name: 'addReceivedSerials', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],10:[function(require,module,exports){[m
+[31m-exports.name = 'extAdminRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'editOrgSettings', desc: 'Add description here' },[m
+[31m-	{ name: 'scheduleStaffNewsletter', desc: 'Add description here' },[m
+[31m-	{ name: 'editStaffAccounts', desc: 'Add description here' },[m
+[31m-	{ name: 'viewStaffAccounts', desc: 'Add description here' },[m
+[31m-	{ name: 'viewLogs', desc: 'Add description here' },[m
+[31m-	{ name: 'exportLogs', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],11:[function(require,module,exports){[m
+[31m-exports.name = 'extCatalogRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'massEditCatalogHoldings', desc: 'Add description here' },[m
+[31m-	{ name: 'massEditCatalogItems', desc: 'Add description here' },[m
+[31m-	{ name: 'exportCatalog', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],12:[function(require,module,exports){[m
+[31m-exports.name = 'extCircRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'forceCheckout', desc: 'Add description here' },[m
+[31m-	{ name: 'forceRenewal', desc: 'Add description here' },[m
+[31m-	{ name: 'forceHold', desc: 'Add description here' },[m
+[31m-	{ name: 'editHoldPriority', desc: 'Add description here' },[m
+[31m-	{ name: 'manageRestrictions', desc: 'Add description here' },[m
+[31m-	{ name: 'generateOverdueReport', desc: 'Add description here' },[m
+[31m-	{ name: 'manageCircRules', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],13:[function(require,module,exports){[m
+[31m-exports.name = 'extPatronRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'updateCharges', desc: 'Add description here' },[m
+[31m-	{name: 'writeOffCharges', desc: 'Add description here' },[m
+[31m-	{name: 'bulkImportPatrons', desc: 'Add description here' },[m
+[31m-	{name: 'bulkEditPatrons', desc: 'Add description here' },[m
+[31m-];[m
+[31m-[m
+[31m-},{}],14:[function(require,module,exports){[m
+[31m-exports.name = 'extReportRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'createReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'deleteReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'importReportTemplates', desc: 'Add description here' },[m
+[31m-	{ name: 'exportReportTemplates', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],15:[function(require,module,exports){[m
+[31m-exports.name = 'godRights';[m
+[31m-exports.rights = [[m
+[31m-	{name: 'editAllOrgs', desc: 'Add description here' },[m
+[31m-	{name: 'viewAllOrgs', desc: 'Add description here' },[m
+[31m-	{name: 'browseSystemItems', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],16:[function(require,module,exports){[m
+[31m-(function (__dirname){[m
+[31m-'use strict';[m
+[31m-[m
+[31m-// Load `*.js` under current directory as properties[m
+[31m-//  i.e., `User.js` will become `exports['User']` or `exports.User`[m
+[31m-require('fs').readdirSync(__dirname + '/').forEach(function(file) {[m
+[31m-	if (file.match(/\.js$/) !== null && file !== 'index.js') {[m
+[31m-		var name = file.replace('.js', '');[m
+[31m-		exports[name] = require('./' + file);[m
+[31m-	}[m
+[31m-});[m
+[31m-[m
+[31m-}).call(this,"/app/models/rights")[m
+[31m-},{"fs":20}],17:[function(require,module,exports){[m
+[31m-exports.name = 'loginRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'devLogin', desc: 'Add description here' },[m
+[31m-	{ name: 'staffLogin', desc: 'Add description here' },[m
+[31m-	{ name: 'patronLogin', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-},{}],18:[function(require,module,exports){[m
+[31m-exports.name = 'readBudgetRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'viewBudget', desc: 'Add description here' },[m
+[31m-	{ name: 'viewBudgetItems', desc: 'Add description here' },[m
+[31m-	{ name: 'viewOrderReports', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],19:[function(require,module,exports){[m
+[31m-exports.name = 'writeBudgetRights';[m
+[31m-exports.rights = [[m
+[31m-	{ name: 'receiveOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'addVendor', desc: 'Add description here' },[m
+[31m-	{ name: 'addOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'addBudgetItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editOrder', desc: 'Add description here' },[m
+[31m-	{ name: 'editBudget', desc: 'Add description here' },[m
+[31m-	{ name: 'editBudgetItem', desc: 'Add description here' },[m
+[31m-	{ name: 'editVendor', desc: 'Add description here' }[m
+[31m-];[m
+[31m-[m
+[31m-[m
+[31m-},{}],20:[function(require,module,exports){[m
+[31m-[m
+[31m-},{}]},{},[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]);[m
+[1mdiff --git a/public/modules/users/services/roles.client.service.js b/public/modules/users/services/roles.client.service.js[m
+[1mindex 26d5a8d..7383fa0 100644[m
+[1m--- a/public/modules/users/services/roles.client.service.js[m
+[1m+++ b/public/modules/users/services/roles.client.service.js[m
+[36m@@ -1,7 +1,9 @@[m
+ 'use strict';[m
+[31m-[m
+ angular.module('users').factory('Roles', ['$resource',[m
+ 	function($resource) {[m
+[32m+[m			[32mvar Rights = require('../../../common/rights.client.bundle.js');[m
+[32m+[m			[32mconsole.log( Rights );[m
+[32m+[m			[32mconsole.log( Rights.name );[m
+ 			return $resource('roles/:roleId', { roleId: '@_id'[m
+ 	}, {[m
+ 		update: {[m

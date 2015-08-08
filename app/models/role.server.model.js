@@ -22,8 +22,8 @@ function unassignRight( right, rightsGroup ) {
 }
 
 
-// which in turn loads all our rights javascript files
-var rightsGroups = require('./rights');
+var rights = require('../common/rights');
+var rightsGroups = rights.files;
 
 // var roleMethods;
 var roleObj = {
@@ -54,7 +54,7 @@ var roleObj = {
 	}]
 		
 };
-var roleOptions = {};
+// var roleOptions = {};
 for (var group in rightsGroups) {
 	if (rightsGroups.hasOwnProperty(group)) {
 		
@@ -63,12 +63,12 @@ for (var group in rightsGroups) {
 		// If the rightsGroup has a name specified(and it is a string) use it
 		if( rightsGroups[group].name && typeof(rightsGroups[group].name) === 'string' ) {
 			roleObj[rightsGroups[group].name] = Schema.Types.Mixed;
-			roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;
+			// roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;
 		}
 		// otherwise default to the file's name.
 		else {
 			roleObj[group] = Schema.Types.Mixed;
-			roleOptions[group] = rightsGroups[group].rights;
+			// roleOptions[group] = rightsGroups[group].rights;
 		}
 	}
 }
@@ -83,9 +83,10 @@ for (var group in rightsGroups) {
 var RoleSchema = new Schema( roleObj );
 
 
-RoleSchema.statics.listAllOptions  = function()  {
-	return JSON.stringify(roleOptions);
-};
+RoleSchema.statics.allOptions = rights.all();
+// function()  {
+// 	return JSON.stringify(roleOptions);
+// };
 
 /**
  * Hook a pre save method to keep the updated property current

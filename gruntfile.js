@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 			}
 		},
 		browserify: {
-			'./public/js/rights.client.bundle.js': ['./app/models/rights']
+			'./public/common/rights.client.bundle.js': ['./app/common/rights']
 		},
 		nodemon: {
 			dev: {
