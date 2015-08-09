@@ -45,52 +45,7 @@
 
 <body class="ng-cloak" data-ng-controller="LayoutController">
 	
-	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-
-
-	<div id="wrapper" data-ng-show="authentication.user">
-
-	<section class="content">
-		
-		
-		
-		<div class="left-sidebar" data-ui-view="sidebar" data-ng-controller="SidebarController">
-				<ul class="sidebar&#45;nav">
-	 			<li class="sidebar&#45;brand">
-	 				<a href="#"> 
-	 					<li> 
-	 						<a href="#">Dashboard</a>
-	 					</li>
-	 					<li>
-	 						<a href="#">Patrons</a>
-	 					</li> 
-	 					<li> 
-	 						<a href="#">Collections</a>
-	 					</li>
-	 					<li>
-	 						<a href="#">Reports</a>
-	 					</li> 
-	 					<li>
-	 						<a href="#">Connect</a> 
-	 					</li> 
-	 					<li> 
-	 						<a href="#">Social</a>
-	 					</li>
-	 				</a>
-	 			</li>
-	 		</ul>
-	 	</div>
-	
-		</div>
-		
-			
-	</div>
-		
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
-
+	{% block content %}{% endblock %}
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
