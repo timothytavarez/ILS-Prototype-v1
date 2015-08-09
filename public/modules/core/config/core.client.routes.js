@@ -10,8 +10,23 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', // 'Authe
 		// Home state routing
 		$stateProvider.
 		state('home', {
-			url: '/',
-			templateUrl: 'modules/core/views/home.client.view.html'
+				url: '/',
+			views: {
+				'contentView': {
+					templateUrl: 'modules/core/views/home.client.view.html'
+				},
+				'sidebarView': {
+					templateUrl: 'modules/core/views/sidebar.client.view.html'
+				}
+			}
 		});
-	}
-]);
+
+		// $stateProvider.
+		// state('sidebar', {
+		// 	url: '/sidebar',
+		// 	templateUrl: 'modules/core/views/sidebar.client.view.html'
+		// });
+
+		}
+		]);
+		

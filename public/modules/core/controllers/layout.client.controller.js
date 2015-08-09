@@ -8,5 +8,6 @@ angular.module('core').controller('LayoutController', ['$scope', 'Authentication
 			$location.path('/signin');
 		}
 		$scope.showLayout = $location.path() !== '/signin';
+	// fuck metis	$('#menu').metisMenu();
 	}
 ]);

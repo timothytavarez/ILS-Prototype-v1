@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('users').factory('Roles', ['$resource',
 	function($resource) {
 			var Rights = require('../../../common/rights.client.bundle.js');
