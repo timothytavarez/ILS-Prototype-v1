@@ -91,7 +91,7 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			var item = $scope.item;
 
 			item.$checkOut(function() {
-				$location.path('items/' + item._id + '/checkOut');
+		
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

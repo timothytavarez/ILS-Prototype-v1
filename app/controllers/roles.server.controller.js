@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Role = mongoose.model('Role'),
-	User = mongoose.model('User'),
+//	User = mongoose.model('User'),
 	_ = require('lodash');
 
 exports.getAllOptions = function(req, res) {
@@ -63,7 +63,6 @@ exports.update = function(req, res) {
  */
 exports.delete = function(req, res) {
 	var role = req.role ;
-
 	role.remove(function(err) {
 		if (err) {
 			return res.status(400).send({

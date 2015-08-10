@@ -39,7 +39,10 @@ angular.module('users').config(['$stateProvider',
       }).
       state('signin', {
         url: '/signin',
+       views: {
+          'contentView': {
         templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+        }}
       }).
       state('forgot', {
         url: '/password/forgot',

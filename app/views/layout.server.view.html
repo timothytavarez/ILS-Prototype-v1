@@ -33,7 +33,6 @@
 
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
-
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
@@ -45,61 +44,15 @@
 <!-- ng&#45;show="$location.path() != '/signin'" -->
 
 <body class="ng-cloak" data-ng-controller="LayoutController">
-	<eeh-navigation-sidebar menu-name="foo"></eeh-navigation-sidebar>
 	
-	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-
-
-	<!-- <div id="wrapper" data&#45;ng&#45;show="authentication.user"> -->
-	<!-- 	<div id="sidebar&#45;wrapper"> -->
-	<!-- 		<ul class="sidebar&#45;nav"> -->
-	<!-- 			<li class="sidebar&#45;brand"> -->
-	<!-- 				<a href="#"> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Dashboard</a> -->
-	<!-- 					</li> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Patrons</a> -->
-	<!-- 					</li> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Collections</a> -->
-	<!-- 					</li> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Reports</a> -->
-	<!-- 					</li> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Connect</a> -->
-	<!-- 					</li> -->
-	<!-- 					<li> -->
-	<!-- 						<a href="#">Social</a> -->
-	<!-- 					</li> -->
-	<!-- 				</a> -->
-	<!-- 			</li> -->
-	<!-- 		</ul> -->
-	<!-- 	</div><!&#45;&#45;left sidebar&#45;&#45;> -->
-	<!-- </div> -->
-
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
-		</section>
-	</section>
-
-	<!-- Script for an eventual button that will toggle our sidebar -->
-	<!--  -->
-	<!-- <script> -->
-	<!-- 	$("#menu&#45;toggle").click(function(e) { -->
-	<!-- 		e.preventDefault(); -->
-	<!-- 		$("#wrapper").toggleClass("toggled"); -->
-	<!-- 	}); -->
-	<!-- </script> -->
+	{% block content %}{% endblock %}
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
 	</script>
 
-	<!-- Elev.io script -->
+	<!-- Elev.io script
 	<script >
 		 // if (user) {
 			var _elev = window._elev || {};(function() {
@@ -109,7 +62,7 @@
 			})();
 			_elev.account_id = '559176030069b';
 		//}
-	</script>
+	</script>  -->
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
 

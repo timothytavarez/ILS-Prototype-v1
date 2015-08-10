@@ -1,5 +1,19 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-	<section data-ui-view></section>
+	<!--<section ui-view="View"></section>-->
+	
+	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
+
+	<div id="wrapper" data-ng-show="authentication.user">
+		<div ui-view="sidebarView">
+		</div>		
+	</div>
+
+		
+	<div class="container" ui-view="contentView">
+		<div></div>
+	</div>
+
 {% endblock %}

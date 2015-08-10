@@ -2,17 +2,17 @@
 
 angular.module('users').controller('RolesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Roles',
 	function($scope, $stateParams, $location, Authentication, Roles) {
-
 		$scope.authentication = Authentication;
 		$scope.optionPool = Roles.getAllOptions();
 		$scope.optionSelections = {};
 
 		// Create new Role
 		$scope.create = function() {
+			
 			// Create new Role object
 			var role = new Roles ({
 				roleName: this.roleName,
-				desc: this.desc//,
+				desc: this.desc
 			});
 				
 			// Redirect after save

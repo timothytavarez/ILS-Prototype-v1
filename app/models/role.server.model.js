@@ -52,8 +52,8 @@ var roleObj = {
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	}]
-		
 };
+
 // var roleOptions = {};
 for (var group in rightsGroups) {
 	if (rightsGroups.hasOwnProperty(group)) {
