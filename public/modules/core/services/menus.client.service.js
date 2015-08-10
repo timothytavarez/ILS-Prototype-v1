@@ -113,7 +113,7 @@ angular.module('core').service('Menus', [
 					this.menus[menuId].items[itemIndex].items.push({
 						title: menuItemTitle,
 						link: menuItemURL,
-						uiRoute: menuItemUIRoute || ('/' + menuItemURL),
+						uiRoute: menuItemUIRoute || (menuItemURL),
 						isPublic: ((isPublic === null || typeof isPublic === 'undefined') ? this.menus[menuId].items[itemIndex].isPublic : isPublic),
 						roles: ((roles === null || typeof roles === 'undefined') ? this.menus[menuId].items[itemIndex].roles : roles),
 						position: position || 0,

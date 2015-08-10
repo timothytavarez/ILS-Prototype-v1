@@ -16,13 +16,13 @@
 }
 
 
-.center_display {
+.center-display {
     background-color: white;
     display: inline-block;
     position: fixed;
-    padding: 30px 0 0 220px;
+    padding: 30px 0 0 0;
     height: 100%;
-    width: 100%;
+    left: 250px;
 }
 
 .left-sidebar {
