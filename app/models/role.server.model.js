@@ -83,7 +83,7 @@ for (var group in rightsGroups) {
 var RoleSchema = new Schema( roleObj );
 
 
-RoleSchema.statics.allOptions = rights.all();
+RoleSchema.statics.allOptions = rights.all;
 // function()  {
 // 	return JSON.stringify(roleOptions);
 // };

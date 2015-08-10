@@ -9,6 +9,11 @@ var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	_ = require('lodash');
 
+exports.getAllOptions = function(req, res) {
+	var rights = Role.allOptions();
+	res.jsonp(rights);
+};
+
 /**
  * Create a Role
  */

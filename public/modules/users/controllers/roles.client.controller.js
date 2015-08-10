@@ -4,6 +4,8 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 	function($scope, $stateParams, $location, Authentication, Roles) {
 
 		$scope.authentication = Authentication;
+		$scope.optionPool = Roles.getAllOptions();
+		$scope.optionSelections = {};
 
 		// Create new Role
 		$scope.create = function() {

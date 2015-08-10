@@ -5,6 +5,9 @@ module.exports = function(app) {
 	var roles = require('../../app/controllers/roles.server.controller');
 
 	// Roles Routes
+	app.route('/roles/rights')
+		.get(roles.getAllOptions);
+
 	app.route('/roles')
 		.get(roles.list)
 		.post(users.requiresLogin, roles.create);

@@ -1,3 +1,27 @@
 <section data-ng-controller="RolesController">
-	This is the Create role
+	<div class="page-header">
+		<h1>New Role</h1>
+	</div>
+<div>
+<!-- <accordion close&#45;other="true"> -->
+<!-- 	<accordion&#45;group heading="{{group.name}}" ng&#45;repeat="group in optionPool"> -->
+<!-- 		<div  ng&#45;repeat="right in group.rights"> -->
+<!-- 			<p><strong>{{right.name}}</strong> &#45; {{right.desc}}</p> -->
+<!-- 		</div> -->
+<!-- 	</accordion&#45;group> -->
+<!-- </accordion> -->
+
+	<accordion close-other="true">
+		<accordion-group data-ng-repeat="group in optionPool" is-open="status.open">
+			<accordion-heading>
+				{{group.name}}
+				<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+			</accordion-heading>
+			<div  ng-repeat="right in group.rights">
+				<p><strong>{{right.name}}</strong> - {{right.desc}}</p>
+			</div>
+		</accordion-group>
+	</accordion>
+</div>
+
 </section>
