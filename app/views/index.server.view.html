@@ -1,14 +1,35 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
+<div class="container-fluid">
+
+	<div class="row">
 	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<div id="wrapper" data-ng-show="authentication.user">
-		<div ui-view="sidebarView">
-		</div>		
-	</div>
-<div class="center-display">		
-	<div class="container-fluid" ui-view="contentView">
-		<div></div>
-	</div>
+	</div> <!-- End of Navbar Row -->
+
+	<div class="row">
+		<div class="col-lg-3 col-md-4 col-sm-5 pull-left" id="wrapper" data-ng-show="authentication.user">
+		{# <div id="wrapper" data-ng-show="authentication.user"> #}
+			<div ui-view="sidebarView">
+			</div>		
+		</div>
+
+		<div class="col-lg-9 col-md-8 col-sm-7 pull-right">		
+			{# <div class="container-fluid" ui-view="contentView"> #}
+			<div ui-view="contentView">
+			</div>
+		</div>
+	</div> <!-- End of Sidebar and Content Row -->
+
+	<div class="row">
+		<div class="container">
+		<div class="footer navbar-bottom">
+			<p>Testing Testing</p>
+			<div ui-view="footerView">
+			</div>
+		</div>
+		</div>
+	</div> <!-- End of Footer Row -->
+
 </div>
 {% endblock %}
