@@ -9,7 +9,11 @@ require('fs').readdirSync(__dirname + '/').forEach(function(file) {
 		exports.files = {};
 		exports.files[name] = require('./' + file);
 
-		roleOptions.push( { name: exports.files[name].name, rights: exports.files[name].rights } );
+		roleOptions.push({ 
+			name: exports.files[name].name, 
+			dispName: exports.files[name].dispName, 
+			rights: exports.files[name].rights
+		});
 	}
 });
 

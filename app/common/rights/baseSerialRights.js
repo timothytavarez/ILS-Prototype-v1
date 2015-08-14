@@ -1,4 +1,5 @@
 exports.name = 'baseSerialRights';
+exports.dispName = 'Serial Rights(Base)';
 exports.rights = [
 	{ name: 'editSubscribedSerials', desc: 'Add description here' },
 	{ name: 'viewSubscribedSerials', desc: 'Add description here' },

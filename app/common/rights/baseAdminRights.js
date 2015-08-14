@@ -1,4 +1,5 @@
 exports.name = 'baseAdminRights';
+exports.dispName = 'Administration Rights(Base)';
 exports.rights = [
 	{ name: 'manageNotificationRules', desc: 'Add description here' },
 	{ name: 'editOrgCalendar', desc: 'Add description here' },

@@ -1,4 +1,5 @@
 exports.name = 'writeBudgetRights';
+exports.dispName = 'Budget Rights(Write)';
 exports.rights = [
 	{ name: 'receiveOrder', desc: 'Add description here' },
 	{ name: 'addVendor', desc: 'Add description here' },

@@ -1,4 +1,5 @@
 exports.name = 'extCircRights';
+exports.dispName = 'Circulation Rights(Extended)';
 exports.rights = [
 	{ name: 'forceCheckout', desc: 'Add description here' },
 	{ name: 'forceRenewal', desc: 'Add description here' },

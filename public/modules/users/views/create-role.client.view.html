@@ -4,20 +4,37 @@
 	</div>
 <div>
 	<div class="row">
-		<div class="col-md-6 show-grid">
+		<div class="col-md-5">
+			<div data-ng-show="error" class="text-danger">
+				<strong data-ng-bind="error"></strong>
+			</div>
+
+			<label class="control-label" for="name">Role Name</label>
+			<div class="controls">
+				<input type="text" data-ng-model="role.name" id="name" class="form-control" placeholder="Name" required>
+			</div>
+			<label class="control-label" for="desc">Role Description</label>
+			<div class="controls">
+				<input type="text" data-ng-model="item.desc" id="desc" class="form-control" placeholder="Description" required>
+			</div>
+		</div>
+
+		<div class="col-md-7">
 			<accordion close-other="true">
-			<accordion-group data-ng-repeat="group in optionPool" is-open="status.open">
+			<accordion-group data-ng-repeat="group in rightsPool | orderBy:'dispName'" is-open="status.open">
 				<accordion-heading>
-					{{group.name}}
+					<i class="pull-left glyphicon" ng-class="{'glyphicon-ok-circle': allSelected(group), 'glyphicon-ban-circle': noneSelected(group), 'glyphicon-record': partialSelected(group)}"></i>
+					{{group.dispName}}
 					<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 				</accordion-heading>
 				<div  ng-repeat="right in group.rights">
-					<p><strong>{{right.name}}</strong> - {{right.desc}}</p>
+					<button type="button" class="btn btn-primary" ng-click="toggleSelect(group, right)" >
+						<span class="glyphicon" ng-class="{'glyphicon-ok-circle': isSelected(right), 'glyphicon-ban-circle': !isSelected(right)}"></span>
+					</button>
+					<strong>{{right.name}}</strong> - {{right.desc}}
 				</div>
 			</accordion-group>
 			</accordion>
 		</div>
 	</div>
-</div>
-
 </section>

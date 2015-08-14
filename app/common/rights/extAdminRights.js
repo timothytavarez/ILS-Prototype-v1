@@ -1,4 +1,5 @@
 exports.name = 'extAdminRights';
+exports.dispName = 'Administration Rights(Extended)';
 exports.rights = [
 	{ name: 'editOrgSettings', desc: 'Add description here' },
 	{ name: 'scheduleStaffNewsletter', desc: 'Add description here' },
