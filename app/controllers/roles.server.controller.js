@@ -84,6 +84,7 @@ exports.list = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			console.log(roles);
 			res.jsonp(roles);
 		}
 	});

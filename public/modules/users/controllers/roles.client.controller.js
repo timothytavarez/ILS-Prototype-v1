@@ -1,18 +1,50 @@
 'use strict';
-    //
-		// var sortRoleGroups = function(a, b) {
-		// 	//toLowerCase() to make sorting case insensitive
-		// 	var strA = a.dispName.toLowerCase(), strB=b.dispName.toLowerCase(); 
-		// 	console.log(strA);
-		// 	//localeCompare() for comparing unicode characters
-		// 	return strA.localeCompare(strB); 
-		// };
 
 angular.module('users').controller('RolesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Roles',
 	function($scope, $stateParams, $location, Authentication, Roles) {
+
+		//Helper functions
+		function addRightsToRole( r, g ) {
+			r[g.name] = [];
+			for( var right, i = 0; i < g.rights.length; i++ ) {
+				right = g.rights[i];
+				if( right.selected === true ) {
+					r[g.name].push(right.name);
+				}
+			}
+		}
+
+		//Scope variables
 		$scope.authentication = Authentication;
 		$scope.rightsPool = Roles.getAllOptions();
+		$scope.initializeRightsPool = function() {
+			var role = $scope.role;
+			var group;
+			for( var i = 0; i < $scope.rightsPool.length; i++) {
+				group = $scope.rightsPool[i];
+				if( role[group.name].length > 0 ) {
+					group.totalSelected = role[group.name].length;
+					// If this block of code is too costly then we can optimize it by sorting 
+					// each string array alphabetically to reduce unnecessary iterations
+					// for now i am sorta brute forcing it here
+					var right;
+					for( var n = 0; n < role[group.name].length; n++ ) {
+						right = role[group.name][n];
+						var groupRight;
+						for( var t = 0; t < group.rights.length; t++ ) {
+							groupRight = group.rights[t];
+							if( groupRight.name === right ) {
+								groupRight.selected = true;
+								break;
+							}
+						}
+					}
+				}
+			}
+		};
 
+
+		//Scope methods
 		$scope.noneSelected = function(group) {
 			return group.totalSelected === 0 || group.totalSelected === undefined;
 		};
@@ -48,13 +80,20 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 
 		// Create new Role
 		$scope.create = function() {
-			
-			// Create new Role object
-			var role = new Roles ({
-				roleName: this.roleName,
+
+			var role = new Roles({
+				roleName: this.name,
 				desc: this.desc
 			});
-				
+
+			//Fill out the selected rights
+			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
+				group = $scope.rightsPool[i];
+				if( group.totalSelected > 0 ) {
+					addRightsToRole(role, group);
+				}
+			}
+
 			// Redirect after save
 			role.$save(function(response) {
 				$location.path('roles/' + response._id);
@@ -104,7 +143,7 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 		$scope.findOne = function() {
 			$scope.role = Roles.get({ 
 				roleId: $stateParams.roleId
-			});
+			}, $scope.initializeRightsPool);
 		};
 	}
 ]);

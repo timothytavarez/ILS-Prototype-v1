@@ -21,10 +21,10 @@
 		</div>
 	</div> <!-- End of Sidebar and Content Row -->
 
-	<div class="row">
+	<div data-ng-show="authentication.user" class="row">
 		<div class="container">
 		<div class="footer navbar-bottom">
-			<p>Testing Testing</p>
+			{# <p>Testing Testing</p> #}
 			<div ui-view="footerView">
 			</div>
 		</div>

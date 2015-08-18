@@ -1,7 +1,7 @@
 
-body {
-    background: white;
-}
+/* body { */
+/*     background: white; */
+/* } */
 
 .form-title {
     
@@ -17,12 +17,13 @@ body {
 }
 
 .logo {
-    width: 250px;
-    margin: 0 auto;
+    /* width: 250px; */
+    /* margin: 0 auto; */
+		margin-left: -10px;
     padding-top: 20%;
 }
 
-form {
+.signin-form {
     text-align: center;
     width: 250px;
     margin: 0 auto;
@@ -30,7 +31,7 @@ form {
     
 }
 
-.sign-in {
+.signin {
     padding-top: 10px;
 }
 

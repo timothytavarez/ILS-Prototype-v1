@@ -29,12 +29,13 @@ var rightsGroups = rights.files;
 var roleObj = {
 	roleName: {
 		type: String,
-		required: true,
+		required: 'Please enter a name for the Role',
 		trim: true
 	},
 
 	desc: {
 		type: String,
+		default: 'No description given.',
 		trim: true
 	},
 	
@@ -57,25 +58,14 @@ var roleObj = {
 // var roleOptions = {};
 for (var group in rightsGroups) {
 	if (rightsGroups.hasOwnProperty(group)) {
-		
-		// Automatically fill out our roleObj with the rightsGroups found 
-		// in the ./rights directory.
-		// If the rightsGroup has a name specified(and it is a string) use it
-		if( rightsGroups[group].name && typeof(rightsGroups[group].name) === 'string' ) {
-			roleObj[rightsGroups[group].name] = Schema.Types.Mixed;
-			// roleOptions[rightsGroups[group].name] = rightsGroups[group].rights;
-		}
-		// otherwise default to the file's name.
-		else {
-			roleObj[group] = Schema.Types.Mixed;
-			// roleOptions[group] = rightsGroups[group].rights;
-		}
+		roleObj[rightsGroups[group].name] = [String];
 	}
 }
+// console.log('rightsGroups');
+// console.log(rightsGroups);
+// console.log('\n');
 // console.log('roleObj: ');
 // console.log(roleObj);
-// console.log('roleOptions: ');
-// console.log(roleOptions);
 
 /**
  * Role Schema
