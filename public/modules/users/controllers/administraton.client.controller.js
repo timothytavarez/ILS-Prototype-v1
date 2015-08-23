@@ -17,7 +17,6 @@ angular.module('users').controller('AdministrationController', ['$scope', '$stat
       $scope.user = Users.get({
         userId: $stateParams.userId
       });
-      console.log($scope.user);
     };
   }
 ]);
