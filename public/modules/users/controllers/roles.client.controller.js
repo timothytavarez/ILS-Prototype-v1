@@ -3,13 +3,18 @@
 angular.module('users').controller('RolesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Roles',
 	function($scope, $stateParams, $location, Authentication, Roles) {
 
-		//Helper functions
-		function addRightsToRole( r, g ) {
+		//Helper functions  r is right. g is group.
+		function applyRightsPoolToRole( r, g ) {
 			r[g.name] = [];
 			for( var right, i = 0; i < g.rights.length; i++ ) {
 				right = g.rights[i];
 				if( right.selected === true ) {
 					r[g.name].push(right.name);
+				} else {
+					var index = r[g.name].indexOf(right.name);
+					if (index != -1) {
+						r[g.name].splice(index, 1);
+					}
 				}
 			}
 		}
@@ -90,7 +95,7 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
 				group = $scope.rightsPool[i];
 				if( group.totalSelected > 0 ) {
-					addRightsToRole(role, group);
+					applyRightsPoolToRole(role, group);
 				}
 			}
 
@@ -126,6 +131,14 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 		// Update existing Role
 		$scope.update = function() {
 			var role = $scope.role;
+
+			//Fill out the selected rights
+			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
+				group = $scope.rightsPool[i];
+				if( group.totalSelected > 0 ) {
+					applyRightsPoolToRole(role, group);
+				}
+			}
 
 			role.$update(function() {
 				$location.path('roles/' + role._id);
