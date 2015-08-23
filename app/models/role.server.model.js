@@ -47,12 +47,7 @@ var roleObj = {
 	updated: {
 		type: Date,
 		default: Date.now
-	},
-
-	users: [{
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	}]
+	}
 };
 
 // var roleOptions = {};

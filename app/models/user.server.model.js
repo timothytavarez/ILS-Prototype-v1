@@ -83,7 +83,7 @@ var UserSchema = new Schema({
 		type: Date
 	},
 
-	roles: [{type: Schema.ObjectId, ref: 'Role'}] // assuming you name your model Task
+	roles: [{type: Schema.ObjectId, ref: 'Role'}]
 });
 
 /**
