@@ -37,18 +37,32 @@
           </div>
         </div>
 
+        <h3>Current Roles</h3>
 
-        <h3>Roles</h3>
-        TODO
-
+        <!-- Single button -->
+        <section data-ng-controller="RolesController" data-ng-init="find()">
+          <div class="btn-group" dropdown is-open="status.isopen">
+            <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+              Add Roles <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+              <li role="menuitem" data-ng-repeat="role in roles"><a href="#">{{ role.roleName }}</a></li>
+              <li class="menuitem" data-ng-hide="!roles.$resolved || roles.length">
+                No Roles yet, why don't you <a href="/#!/roles/create">create one</a>?
+              </li>
+            </ul>
+          </div>
+        </section>
 
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>
+
         <div data-ng-show="error" class="text-danger">
           <strong data-ng-bind="error"></strong>
         </div>
       </fieldset>
+
     </form>
   </div>
 </section>
