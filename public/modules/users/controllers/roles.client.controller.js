@@ -81,15 +81,16 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 			return right.selected;
 		};
 		
-		
+		$scope.initRole = function () {
+			$scope.role = new Roles({
+				roleName: "",
+				desc: ""
+			});
+		};
 
 		// Create new Role
 		$scope.create = function() {
-
-			var role = new Roles({
-				roleName: this.name,
-				desc: this.desc
-			});
+			var role = $scope.role;
 
 			//Fill out the selected rights
 			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
