@@ -1,8 +1,8 @@
 exports.name = 'basePatronAdminRights';
 exports.dispName = 'Patron Administration Rights(Base)';
 exports.rights = [
-	{name: 'addPatrons', desc: 'Add description here' },
-	{name: 'editPatrons', desc: 'Add description here' },
-	{name: 'editPatronComments', desc: 'Add description here' },
-	{name: 'editPatronTags', desc: 'Add description here' },
+	{name: 'addPatrons', dispName: 'Add Patrons', desc: 'Add description here' },
+	{name: 'editPatrons', dispName: 'Edit Patrons', desc: 'Add description here' },
+	{name: 'editPatronComments', dispName: 'Edit Patrons Comments', desc: 'Add description here' },
+	{name: 'editPatronTags', dispName: 'Edit Patron Tags', desc: 'Add description here' },
 ];

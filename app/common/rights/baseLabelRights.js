@@ -1,8 +1,8 @@
 exports.name = 'baseLabelRights';
 exports.dispName = 'Label Rights(Base)';
 exports.rights = [
-	{ name: 'createLabel', desc: 'Add description here' },
-	{ name: 'editLabel', desc: 'Add description here' },
-	{ name: 'deleteLabel', desc: 'Add description here' }
+	{ name: 'createLabel', dispName: 'Create Label', desc: 'Add description here' },
+	{ name: 'editLabel', dispName: 'Edit Label', desc: 'Add description here' },
+	{ name: 'deleteLabel', dispName: 'Delete Label', desc: 'Add description here' }
 ];
 

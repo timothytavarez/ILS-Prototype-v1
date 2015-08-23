@@ -1,9 +1,9 @@
 exports.name = 'baseCatalogRights';
 exports.dispName = 'Cataloging Rights(Base)';
 exports.rights = [
-	{ name: 'createItem', desc: 'Add description here' },
-	{ name: 'editItemData', desc: 'Add description here' },
-	{ name: 'editItemHolding', desc: 'Add description here' },
-	{ name: 'editItemTag', desc: 'Add description here' }
+	{ name: 'createItem', dispName: 'Create Item', desc: 'Add description here' },
+	{ name: 'editItemData', dispName: 'Edit Item Data', desc: 'Add description here' },
+	{ name: 'editItemHolding', dispName: 'Edit Item Holding', desc: 'Add description here' },
+	{ name: 'editItemTag', dispName: 'Edit Item Tag', desc: 'Add description here' }
 ];
 

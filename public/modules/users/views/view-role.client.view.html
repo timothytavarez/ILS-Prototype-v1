@@ -14,10 +14,10 @@
 			<label class="control-label" >Rights</label>
 			<ul>
 				<li data-ng-repeat="group in rightsPool" data-ng-if="group.totalSelected > 0">
-					<h4 class="list-group-item-heading">{{group.name}}</h4>
+					<h4 class="list-group-item-heading">{{group.dispName}}</h4>
 					<ul>
 						<li data-ng-repeat="right in group.rights" data-ng-if="right.selected">
-							<h5 class="list-group-item-heading">{{right.name}}</h5>
+							<h5 class="list-group-item-heading">{{right.dispName}}</h5>
 						</li>
 					</ul>
 				</li>

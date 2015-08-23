@@ -36,7 +36,7 @@
 						<div  ng-repeat="right in group.rights">
 							<button type="button" class="btn btn-link" ng-click="toggleSelect(group, right)" >
 								<span class="glyphicon" ng-class="{'glyphicon-check': isSelected(right), 'glyphicon-unchecked': !isSelected(right)}"></span>
-							<strong>{{right.name}}</strong> - {{right.desc}}
+							<strong>{{right.dispName}}</strong> - {{right.desc}}
 							</button>
 						</div>
 					</accordion-group>

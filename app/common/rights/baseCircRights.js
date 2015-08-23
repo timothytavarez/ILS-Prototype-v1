@@ -1,8 +1,8 @@
 exports.name = 'baseCircRights';
 exports.dispName = 'Circulation Rights(Base)';
 exports.rights = [
-	{ name: 'checkOut', desc: 'Add description here' },
-	{ name: 'checkIn', desc: 'Add description here' },
-	{ name: 'renew', desc: 'Add description here' },
-	{ name: 'hold', desc: 'Add description here' }
+	{ name: 'checkOut', dispName: 'Check Out', desc: 'Add description here' },
+	{ name: 'checkIn', dispName: 'Check In', desc: 'Add description here' },
+	{ name: 'renew', dispName: 'Renew', desc: 'Add description here' },
+	{ name: 'hold', dispName: 'Hold', desc: 'Add description here' }
 ];

@@ -1,7 +1,7 @@
 exports.name = 'loginRights';
 exports.dispName = 'Login Rights';
 exports.rights = [
-	{ name: 'devLogin', desc: 'Add description here' },
-	{ name: 'staffLogin', desc: 'Add description here' },
-	{ name: 'patronLogin', desc: 'Add description here' }
+	{ name: 'devLogin', dispName: 'Development Login', desc: 'Add description here' },
+	{ name: 'staffLogin', dispName: 'Staff Login', desc: 'Add description here' },
+	{ name: 'patronLogin', dispName: 'Patron Login', desc: 'Add description here' }
 ];
