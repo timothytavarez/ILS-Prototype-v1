@@ -1,10 +1,11 @@
-'use strict';
+(function() {
+	'use strict';
 
-
-/*@ngInject*/
-angular.module('core').controller('HomeController',
-	function($scope, Authentication) {
-		// This provides Authentication context.
-		$scope.authentication = Authentication;
-	}
-);
+	angular /*@ngInject*/
+		.module('core')
+		.controller('HomeController', function($scope, Authentication) {
+			// This provides Authentication context.
+			$scope.authentication = Authentication;
+		}
+	);
+})();
