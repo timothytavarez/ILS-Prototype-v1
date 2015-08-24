@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('core').controller('LayoutController', ['$scope', 'Authentication', '$location',
+/*@ngInject*/
+angular.module('core').controller('LayoutController',
 	function($scope, Authentication, $location) {
 		$scope.authentication = Authentication;
 		// Layout controller logic
@@ -10,4 +11,4 @@ angular.module('core').controller('LayoutController', ['$scope', 'Authentication
 		$scope.showLayout = $location.path() !== '/signin';
 	// fuck metis	$('#menu').metisMenu();
 	}
-]);
+);

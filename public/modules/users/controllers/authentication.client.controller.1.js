@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
+/*@ngInject*/
+angular.module('users').controller('AuthenticationController',
 	function($scope, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
 
@@ -31,4 +32,4 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			});
 		};
 	}
-]);
+);

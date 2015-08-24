@@ -1,7 +1,8 @@
 'use strict';
 
 //Setting up route
-angular.module('users').config(['$stateProvider',
+/*@ngInject*/
+angular.module('users').config(
 	function($stateProvider) {
 		// Roles state routing
 		$stateProvider.
@@ -50,4 +51,4 @@ angular.module('users').config(['$stateProvider',
 			}
 		});
 	}
-]);
+);

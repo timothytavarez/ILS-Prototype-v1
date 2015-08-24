@@ -1,7 +1,8 @@
 'use strict';
 
 // Items controller
-angular.module('items').controller('ItemsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Items',
+/*@ngInject*/
+angular.module('items').controller('ItemsController', 
 	function($scope, $stateParams, $location, Authentication, Items) {
 		$scope.authentication = Authentication;
 
@@ -139,4 +140,4 @@ angular.module('items').controller('ItemsController', ['$scope', '$stateParams',
 			});
 		};
 	}
-]);
+);

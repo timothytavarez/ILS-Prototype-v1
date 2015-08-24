@@ -1,7 +1,8 @@
 'use strict';
 
 //Setting up route
-angular.module('libraries').config(['$stateProvider',
+/*@ngInject*/
+angular.module('libraries').config(
 	function($stateProvider) {
 		// Libraries state routing
 		$stateProvider.
@@ -22,4 +23,4 @@ angular.module('libraries').config(['$stateProvider',
 			templateUrl: 'modules/libraries/views/edit-library.client.view.html'
 		});
 	}
-]);
+);

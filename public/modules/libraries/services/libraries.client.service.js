@@ -1,7 +1,8 @@
 'use strict';
 
 //Libraries service used to communicate Libraries REST endpoints
-angular.module('libraries').factory('Libraries', ['$resource',
+/*@ngInject*/
+angular.module('libraries').factory('Libraries',
 	function($resource) {
 		return $resource('libraries/:libraryId', { libraryId: '@_id'
 		}, {
@@ -10,4 +11,4 @@ angular.module('libraries').factory('Libraries', ['$resource',
 			}
 		});
 	}
-]);
+);

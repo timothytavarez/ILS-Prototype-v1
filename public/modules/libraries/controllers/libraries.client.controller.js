@@ -1,7 +1,8 @@
 'use strict';
 
 // Libraries controller
-angular.module('libraries').controller('LibrariesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Libraries',
+/*@ngInject*/
+angular.module('libraries').controller('LibrariesController',
 	function($scope, $stateParams, $location, Authentication, Libraries) {
 		$scope.authentication = Authentication;
 
@@ -63,4 +64,4 @@ angular.module('libraries').controller('LibrariesController', ['$scope', '$state
 			});
 		};
 	}
-]);
+);

@@ -1,7 +1,8 @@
 'use strict';
 
 //Items service used to communicate Items REST endpoints
-angular.module('items').factory('Items', ['$resource',
+/*@ngInject*/
+angular.module('items').factory('Items',
 	function($resource) {
 		return $resource('items/:itemId', { itemId: '@_id'
 		}, {
@@ -27,4 +28,4 @@ angular.module('items').factory('Items', ['$resource',
 
 		});
 	}
-]);
+);

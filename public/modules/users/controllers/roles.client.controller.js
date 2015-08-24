@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('users').controller('RolesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Roles',
+/*@ngInject*/
+angular.module('users').controller('RolesController',
 	function($scope, $stateParams, $location, Authentication, Roles) {
 
 		//Helper functions  r is right. g is group.
@@ -160,4 +161,4 @@ angular.module('users').controller('RolesController', ['$scope', '$stateParams',
 			}, $scope.initializeRightsPool);
 		};
 	}
-]);
+);

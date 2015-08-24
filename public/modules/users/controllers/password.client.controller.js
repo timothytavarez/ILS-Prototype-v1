@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
+/*@ngInject*/
+angular.module('users').controller('PasswordController',
 	function($scope, $stateParams, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
 
@@ -41,4 +42,4 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 			});
 		};
 	}
-]);
+);

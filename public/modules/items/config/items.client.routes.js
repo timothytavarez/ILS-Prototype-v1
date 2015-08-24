@@ -1,7 +1,8 @@
 'use strict';
 
 //Setting up route
-angular.module('items').config(['$stateProvider',
+/*@ngInject*/
+angular.module('items').config(
 	function($stateProvider) {
 		// Items state routing
 		$stateProvider.
@@ -46,4 +47,4 @@ angular.module('items').config(['$stateProvider',
 			  }}
 		});
 	}
-]);
+);

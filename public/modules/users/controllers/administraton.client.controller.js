@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AdministrationController', ['$scope', '$stateParams', '$http', '$location', 'Authentication', 'Users',
+/*@ngInject*/
+angular.module('users').controller('AdministrationController',
   function($scope, $stateParams, $http, $location, Authentication, Users) {
     $scope.authentication = Authentication;
 
@@ -19,4 +20,4 @@ angular.module('users').controller('AdministrationController', ['$scope', '$stat
       });
     };
   }
-]);
+);

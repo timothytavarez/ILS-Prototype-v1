@@ -1,8 +1,9 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider', // 'Authentication',
-	function($stateProvider, $urlRouterProvider/*, Authentication */) {
+/*@ngInject*/
+angular.module('core').config(
+	function($stateProvider, $urlRouterProvider) {
 		// $urlRouterProvider.when( !Authentication.user, '/signin' );
 		// Redirect to home view when route not found
 		$urlRouterProvider.otherwise('/');
@@ -20,13 +21,4 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', // 'Authe
 				}
 			}
 		});
-
-		// $stateProvider.
-		// state('sidebar', {
-		// 	url: '/sidebar',
-		// 	templateUrl: 'modules/core/views/sidebar.client.view.html'
-		// });
-
-		}
-		]);
-		
+	});

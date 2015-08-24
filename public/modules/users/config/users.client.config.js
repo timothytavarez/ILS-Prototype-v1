@@ -1,7 +1,8 @@
 'use strict';
 
 // Config HTTP Error Handling
-angular.module('users').config(['$httpProvider',
+/*@ngInject*/
+angular.module('users').config(
 	function($httpProvider) {
 		// Set the httpProvider "not authorized" interceptor
 		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
@@ -27,10 +28,12 @@ angular.module('users').config(['$httpProvider',
 			}
 		]);
 	}
-]);
+);
 
-angular.module('users').run(['Menus',
+/*@ngInject*/
+angular.module('users').run(
 	function(Menus) {
 		// Set top bar menu items
 		Menus.addMenuItem('topbar', 'Users', 'users', 'user', '/users');
-	}]);
+	}
+);
