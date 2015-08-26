@@ -5,33 +5,34 @@
 		.module('users')
 		.controller('RolesController', RolesController);
 
-	function RolesController($scope, $stateParams, $location, Authentication, Roles) {
+	function RolesController($stateParams, $location, Authentication, Roles) {
+		var vm = this;
 
 		// Scope Variables
-		$scope.authentication = Authentication;
-		$scope.rightsPool = Roles.getAllOptions();
+		vm.authentication = Authentication;
+		vm.rightsPool = Roles.getAllOptions();
 
 		// Scope Methods
-		$scope.initializeRightsPool = initializeRightsPool;
+		vm.initializeRightsPool = initializeRightsPool;
 
-		$scope.noneSelected = noneSelected;
-		$scope.allSelected = allSelected;
-		$scope.partialSelected = partialSelected;
-		$scope.isSelected = isSelected;
-		$scope.toggleSelect = toggleSelect; 
-		$scope.initRole = initRole;
+		vm.noneSelected = noneSelected;
+		vm.allSelected = allSelected;
+		vm.partialSelected = partialSelected;
+		vm.isSelected = isSelected;
+		vm.toggleSelect = toggleSelect; 
+		vm.initRole = initRole;
 
-		$scope.create = create;
-		$scope.remove = remove;
-		$scope.update = update;
-		$scope.find = find;
-		$scope.findOne = findOne;
+		vm.create = create;
+		vm.remove = remove;
+		vm.update = update;
+		vm.find = find;
+		vm.findOne = findOne;
 
 		function initializeRightsPool() {
-			var role = $scope.role;
+			var role = vm.role;
 			var group;
-			for( var i = 0; i < $scope.rightsPool.length; i++) {
-				group = $scope.rightsPool[i];
+			for( var i = 0; i < vm.rightsPool.length; i++) {
+				group = vm.rightsPool[i];
 				if( role[group.name].length > 0 ) {
 					group.totalSelected = role[group.name].length;
 					// If this block of code is too costly then we can optimize it by sorting 
@@ -63,7 +64,7 @@
 		}
 
 		function partialSelected(group) {
-			return !$scope.allSelected(group) && !$scope.noneSelected(group);
+			return !vm.allSelected(group) && !vm.noneSelected(group);
 		}
 
 		function toggleSelect(group, right){
@@ -87,18 +88,18 @@
 
 
 		function initRole() {
-			$scope.role = new Roles({
+			vm.role = new Roles({
 				roleName: '',
 				desc: ''
 			});
 		}
 
 		function create() {
-			var role = $scope.role;
+			var role = vm.role;
 
 			//Fill out the selected rights
-			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
-				group = $scope.rightsPool[i];
+			for( var group, i = 0; i < vm.rightsPool.length; i++ ) {
+				group = vm.rightsPool[i];
 				if( group.totalSelected > 0 ) {
 					applyRightsPoolToRole(role, group);
 				}
@@ -109,10 +110,10 @@
 				$location.path('roles/' + response._id);
 
 				// Clear form fields
-				$scope.roleName = '';
-				$scope.desc = '';
+				vm.roleName = '';
+				vm.desc = '';
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
@@ -120,24 +121,24 @@
 			if ( role ) { 
 				role.$remove();
 
-				for (var i in $scope.roles) {
-					if ($scope.roles[i] === role) {
-						$scope.roles.splice(i, 1);
+				for (var i in vm.roles) {
+					if (vm.roles[i] === role) {
+						vm.roles.splice(i, 1);
 					}
 				}
 			} else {
-				$scope.role.$remove(function() {
+				vm.role.$remove(function() {
 					$location.path('roles');
 				});
 			}
 		}
 
 		function update() {
-			var role = $scope.role;
+			var role = vm.role;
 
 			//Fill out the selected rights
-			for( var group, i = 0; i < $scope.rightsPool.length; i++ ) {
-				group = $scope.rightsPool[i];
+			for( var group, i = 0; i < vm.rightsPool.length; i++ ) {
+				group = vm.rightsPool[i];
 				if( group.totalSelected > 0 ) {
 					applyRightsPoolToRole(role, group);
 				}
@@ -146,18 +147,18 @@
 			role.$update(function() {
 				$location.path('roles/' + role._id);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
 		function find() {
-			$scope.roles = Roles.query();
+			vm.roles = Roles.query();
 		}
 
 		function findOne() {
-			$scope.role = Roles.get({ 
+			vm.role = Roles.get({ 
 				roleId: $stateParams.roleId
-			}, $scope.initializeRightsPool);
+			}, vm.initializeRightsPool);
 		}
 		//Helper functions  r is right. g is group.
 		function applyRightsPoolToRole( r, g ) {

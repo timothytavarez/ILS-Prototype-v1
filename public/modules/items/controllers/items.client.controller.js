@@ -6,32 +6,34 @@
 		.module('items')
 		.controller('ItemsController', ItemsController);
 
-	function ItemsController($scope, $stateParams, $location, Authentication, Items) {
-		$scope.authentication = Authentication;
+	function ItemsController($stateParams, $location, Authentication, Items) {
+		var vm = this;
 
-		$scope.canHold = canHold; 
-		$scope.canCheckOut = canCheckOut; 
-		$scope.canCheckIn = canCheckIn; 
-		$scope.canRenew = canRenew; 
+		vm.authentication = Authentication;
 
-		$scope.checkOut = checkOut; 
-		$scope.checkIn = checkIn;
-		$scope.renew = renew;
-		$scope.hold = hold; 
+		vm.canHold = canHold; 
+		vm.canCheckOut = canCheckOut; 
+		vm.canCheckIn = canCheckIn; 
+		vm.canRenew = canRenew; 
 
-		$scope.create = create; 
-		$scope.find = find;
-		$scope.findOne = findOne;
-		$scope.update = update;
-		$scope.remove = remove;  
+		vm.checkOut = checkOut; 
+		vm.checkIn = checkIn;
+		vm.renew = renew;
+		vm.hold = hold; 
+
+		vm.create = create; 
+		vm.find = find;
+		vm.findOne = findOne;
+		vm.update = update;
+		vm.remove = remove;  
 
 
 		function canHold() {
-			if( $scope.item.isOnHold ) {
+			if( vm.item.isOnHold ) {
 				return false;
 			}
 
-			else if ( $scope.item.checkedOutBy === undefined ) {
+			else if ( vm.item.checkedOutBy === undefined ) {
 				return true;
 			}
 
@@ -39,65 +41,65 @@
 		}
 
 		function canCheckOut() {
-			if( $scope.item.isCheckedOut ) {
+			if( vm.item.isCheckedOut ) {
 				return false;
 			}
-			else if( $scope.item.isOnHold && $scope.item.heldFor._id !== $scope.authentication.user._id ) {
+			else if( vm.item.isOnHold && vm.item.heldFor._id !== vm.authentication.user._id ) {
 				return false;
 			}
 			return true;
 		}
 
 		function canCheckIn() {
-			return $scope.item.isCheckedOut && $scope.authentication.user._id === $scope.item.checkedOutBy._id;
+			return vm.item.isCheckedOut && vm.authentication.user._id === vm.item.checkedOutBy._id;
 		}
 
 		function canRenew() {
-			return $scope.item.isCheckedOut && $scope.authentication.user._id === $scope.item.checkedOutBy._id && !$scope.item.isOnHold;
+			return vm.item.isCheckedOut && vm.authentication.user._id === vm.item.checkedOutBy._id && !vm.item.isOnHold;
 		}
 
 
 		function checkOut() {
 			// if( !canCheckOut() ) return;
-			var item = $scope.item;
+			var item = vm.item;
 
 			item.$checkOut(function() {
 
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
 		function checkIn() {
 			// if( !canCheckIn() ) return;
-			var item = $scope.item;
+			var item = vm.item;
 			item.$checkIn(function() {
 				$location.path('items/' + item._id);
 			}, function(errorresponse) {
-				$scope.error = errorresponse.data.message;
+				vm.error = errorresponse.data.message;
 			});
 		}
 
 
 		function renew() {
 			// if( !canRenew() ) return;
-			var item = $scope.item;
+			var item = vm.item;
 
 			item.$renew(function() {
 				$location.path('items/' + item._id);
 			}, function(errorresponse) {
-				$scope.error = errorresponse.data.message;
+				vm.error = errorresponse.data.message;
 			});
 		}
 
 		function hold() {
 			// if( !canHold() ) return;
-			var item = $scope.item;
+			var item = vm.item;
 
 			item.$hold(function() {
 				$location.path('items/' + item._id);
 			}, function(errorresponse) {
-				$scope.error = errorresponse.data.message;
+				vm.error = errorresponse.data.message;
 			});
 		}
 
@@ -105,13 +107,13 @@
 		function create() {
 			// Create new Item object
 			var item = new Items ({
-				itemType: this.itemType,
-				title: this.title,
-				author: this.author,
-				desc: this.desc//,
-				// pub: this.pub,
-				// pubDate: this.pubDate,
-				// image: this.image
+				itemType: vm.itemType,
+				title: vm.title,
+				author: vm.author,
+				desc: vm.desc//,
+				// pub: vm.pub,
+				// pubDate: vm.pubDate,
+				// image: vm.image
 			});
 
 			// Redirect after save
@@ -119,29 +121,29 @@
 				$location.path('items/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				vm.name = '';
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
 		function find() {
-			$scope.items = Items.query();
+			vm.items = Items.query();
 		}
 
 		function findOne() {
-			$scope.item = Items.get({ 
+			vm.item = Items.get({ 
 				itemId: $stateParams.itemId
 			});
 		}
 
 		function update() {
-			var item = $scope.item;
+			var item = vm.item;
 
 			item.$update(function() {
 				$location.path('items/' + item._id);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
@@ -149,13 +151,13 @@
 			if ( item ) { 
 				item.$remove();
 
-				for (var i in $scope.items) {
-					if ($scope.items [i] === item) {
-						$scope.items.splice(i, 1);
+				for (var i in vm.items) {
+					if (vm.items [i] === item) {
+						vm.items.splice(i, 1);
 					}
 				}
 			} else {
-				$scope.item.$remove(function() {
+				vm.item.$remove(function() {
 					$location.path('items');
 				});
 			}
