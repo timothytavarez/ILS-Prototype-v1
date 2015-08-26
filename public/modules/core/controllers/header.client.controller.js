@@ -1,21 +1,28 @@
 (function() {
 	'use strict';
 
-	/*@ngInject*/
-	angular.module('core').controller('HeaderController',
-			function($scope, Authentication, Menus) {
-				$scope.authentication = Authentication;
-				$scope.isCollapsed = false;
-				$scope.menu = Menus.getMenu('topbar');
+	angular /*@ngInject*/
+		.module('core')
+		.controller('HeaderController', HeaderController);
 
-				$scope.toggleCollapsibleMenu = function() {
-					$scope.isCollapsed = !$scope.isCollapsed;
-				};
+	function HeaderController($scope, Authentication, Menus) {
 
-				// Collapsing the menu after navigation
-				$scope.$on('$stateChangeSuccess', function() {
-					$scope.isCollapsed = false;
-				});
-			}
-			);
+		$scope.toggleCollapsibleMenu = toggleCollapsibleMenu;
+		$scope.authentication = Authentication;
+		$scope.isCollapsed = false;
+		$scope.menu = Menus.getMenu('topbar');
+
+		// Collapsing the menu after navigation
+		$scope.$on('$stateChangeSuccess', menuResponse);
+
+
+		function toggleCollapsibleMenu() {
+			$scope.isCollapsed = !$scope.isCollapsed;
+		}
+
+
+		function menuResponse() {
+			$scope.isCollapsed = false;
+		}
+	}
 })();

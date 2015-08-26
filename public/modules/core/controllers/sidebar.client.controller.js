@@ -1,13 +1,12 @@
 (function() {
 	'use strict';
 
-
-	/*@ngInject*/
-	angular.module('core').controller('SidebarController',
-			function($scope, Authentication) {
-
-				// This provides Authentication context.
-				$scope.authentication = Authentication;
-			}
-			);
+	angular /*@ngInject*/
+		.module('core')
+		.controller('SidebarController', SidebarController);
+	
+	function SidebarController($scope, Authentication) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+	}
 })();

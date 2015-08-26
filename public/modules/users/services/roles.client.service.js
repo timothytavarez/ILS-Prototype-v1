@@ -3,19 +3,18 @@
 
 	angular /*@ngInject*/
 		.module('users')
-		.factory('Roles', function($resource) {
-			return $resource('roles/:roleId', { 
-				roleId: '@_id'
-			}, {
-				update: {
-					method: 'PUT'
-				},
-				getAllOptions: {
-					method: 'GET',
-					isArray: true,
-					url: 'roles/rights'
-				}
-			});
-		}
-		);
+		.factory('Roles', Roles);
+
+	function Roles($resource) {
+		var paramDefaults = { roleId: '@_id' };
+		var actions = {
+			update: { method: 'PUT' },
+			getAllOptions: {
+				method: 'GET',
+				isArray: true,
+				url: 'roles/rights'
+			}
+		};
+		return $resource('roles/:roleId', paramDefaults, actions);
+	}
 })();

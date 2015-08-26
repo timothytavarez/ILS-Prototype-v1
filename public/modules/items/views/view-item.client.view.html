@@ -18,10 +18,14 @@
 			</div>
     </div>
 
-		<a ng-if="canHold()" data-ng-click="hold()">Place On Hold</a><br>
-		<a ng-if="canCheckOut()" data-ng-click="checkOut();">Check Out</a><br>
-		<a ng-if="canCheckIn()"  data-ng-click="checkIn();">Check In</a><br>
-		<a ng-if="canRenew()"  data-ng-click="renew();">Renew Book</a><br>
+		<a class="btn btn-primary" data-ng-disabled="!canHold()" data-ng-click="hold()">Place On Hold</a>
+		<br>
+		<a class="btn btn-primary" data-ng-disabled="!canCheckOut()" data-ng-click="checkOut();">Check Out</a>
+		<br>
+		<a class="btn btn-primary" data-ng-disabled="!canCheckIn()"  data-ng-click="checkIn();">Check In</a>
+		<br>
+		<a class="btn btn-primary" data-ng-disabled="!canRenew()"  data-ng-click="renew();">Renew Book</a>
+		<br>
 	
 		<a class="btn btn-primary" ng-href="/#!/items/{{item._id}}/edit">
 			<span class="glyphicon glyphicon-edit"></span>

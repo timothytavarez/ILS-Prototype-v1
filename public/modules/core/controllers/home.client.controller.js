@@ -3,9 +3,10 @@
 
 	angular /*@ngInject*/
 		.module('core')
-		.controller('HomeController', function($scope, Authentication) {
-			// This provides Authentication context.
-			$scope.authentication = Authentication;
-		}
-	);
+		.controller('HomeController', HomeController);
+
+	function HomeController($scope, Authentication) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+	}
 })();

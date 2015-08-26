@@ -3,72 +3,86 @@
 
 	angular /*@ngInject*/
 		.module('users')
-		.controller('SettingsController', function($scope, $http, $location, Users, Authentication) {
-			$scope.user = Authentication.user;
+		.controller('SettingsController', SettingsController);
 
-			// If user is not signed in then redirect back home
-			if (!$scope.user) $location.path('/');
+	function SettingsController($scope, $http, $location, Users, Authentication) {
+		$scope.user = Authentication.user;
 
-			// Check if there are additional accounts 
-			$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
-				for (var i in $scope.user.additionalProvidersData) {
-					return true;
-				}
+		// If user is not signed in then redirect to the signin page
+		if (!$scope.user) $location.path('/signin');
 
-				return false;
-			};
+		$scope.hasConnectedAdditionalSocialAccounts = hasConnectedAdditionalSocialAccounts;
+		$scope.isConnectedSocialAccount = isConnectedSocialAccount;
+		$scope.removeUserSocialAccount = removeUserSocialAccount;
+		$scope.updateUserProfile = updateUserProfile;
+		$scope.changeUserPassword = changeUserPassword;
 
-			// Check if provider is already in use with current user
-			$scope.isConnectedSocialAccount = function(provider) {
-				return $scope.user.provider === provider || ($scope.user.additionalProvidersData && $scope.user.additionalProvidersData[provider]);
-			};
 
-			// Remove a user social account
-			$scope.removeUserSocialAccount = function(provider) {
-				$scope.success = $scope.error = null;
-
-				$http.delete('/users/accounts', {
-					params: {
-						provider: provider
-					}
-				}).success(function(response) {
-					// If successful show success message and clear form
-					$scope.success = true;
-					$scope.user = Authentication.user = response;
-				}).error(function(response) {
-					$scope.error = response.message;
-				});
-			};
-
-			// Update a user profile
-			$scope.updateUserProfile = function(isValid) {
-				if (isValid) {
-					$scope.success = $scope.error = null;
-					var user = new Users($scope.user);
-
-					user.$update(function(response) {
-						$scope.success = true;
-						Authentication.user = response;
-					}, function(response) {
-						$scope.error = response.data.message;
-					});
-				} else {
-					$scope.submitted = true;
-				}
-			};
-
-			// Change user password
-			$scope.changeUserPassword = function() {
-				$scope.success = $scope.error = null;
-
-				$http.post('/users/password', $scope.passwordDetails).success(function(response) {
-					// If successful show success message and clear form
-					$scope.success = true;
-					$scope.passwordDetails = null;
-				}).error(function(response) {
-					$scope.error = response.message;
-				});
-			};
+		// Check if there are additional accounts 
+		function hasConnectedAdditionalSocialAccounts(provider) {
+			for (var i in $scope.user.additionalProvidersData) {
+				return true;
+			}
+			return false;
 		}
-	);
+
+		// Check if provider is already in use with current user
+		function isConnectedSocialAccount(provider) {
+			var user = $scope.user;
+			return user.provider === provider || (user.additionalProvidersData && user.additionalProvidersData[provider]);
+		}
+
+		// Remove a user social account
+		function removeUserSocialAccount(provider) {
+			$scope.success = $scope.error = null;
+
+			// TODO: use $resource?
+			$http
+				.delete('/users/accounts', { params: { provider: provider } })
+				.success(userSuccess)
+				.error(httpError);
+		}
+
+		// Update a user profile
+		function updateUserProfile(isValid) {
+			if (isValid) {
+				$scope.success = $scope.error = null;
+
+				var user = new Users($scope.user);
+				user.$update(userSuccess, updateError);
+
+			} else {
+				$scope.submitted = true;
+			}
+		}
+
+		// Change user password
+		function changeUserPassword() {
+			$scope.success = $scope.error = null;
+
+			$http
+				.post('/users/password', $scope.passwordDetails)
+				.success(pwSuccess)
+				.error(httpError);
+
+		}
+
+		// Response Handler Callbacks
+		function userSuccess(response) {
+			$scope.success = true;
+			Authentication.user = response;
+		}
+		function pwSuccess(response) {
+			// If successful show success message and clear form
+			$scope.success = true;
+			$scope.passwordDetails = null;
+		}
+
+		function updateError(response) {
+			$scope.error = response.data.message;
+		}
+		function httpError(response) {
+			$scope.error = response.message;
+		}
+	}
 })();

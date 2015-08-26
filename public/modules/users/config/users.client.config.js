@@ -1,41 +1,40 @@
 (function() {
 	'use strict';
 
+	angular /*@ngInject*/
+		.module('users')
+		.config(config)
+		.run(run);
+
 	// Config HTTP Error Handling
-	angular /*@ngInject*/
-		.module('users')
-		.config( function($httpProvider) {
-			// Set the httpProvider "not authorized" interceptor
-			$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
-					function($q, $location, Authentication) {
-						return {
-							responseError: function(rejection) {
-								switch (rejection.status) {
-									case 401:
-										// Deauthenticate the global user
-										Authentication.user = null;
+	function config($httpProvider) {
+		// Set the httpProvider "not authorized" interceptor
+		$httpProvider /*@ngInject*/
+			.interceptors
+			.push(ResErrorInterceptor);
 
-										// Redirect to signin page
-										$location.path('signin');
-										break;
-									case 403:
-										// Add unauthorized behaviour 
-										break;
-								}
+		function ResErrorInterceptor($q, $location, Authentication) {
+			return { responseError: handleRej };
 
-								return $q.reject(rejection);
-							}
-						};
-					}
-			]);
+			function handleRej(rejection) {
+				switch (rejection.status) {
+					case 401:
+						// Deauthenticate the global user 
+						// then Redirect to signin page
+						Authentication.user = null;
+						$location.path('signin');
+						break;
+					case 403:
+						// Add unauthorized behaviour 
+						break;
+				}
+				return $q.reject(rejection);
+			}
 		}
-	);
+	}
 
-	angular /*@ngInject*/
-		.module('users')
-		.run( function(Menus) {
-			// Set top bar menu items
-			Menus.addMenuItem('topbar', 'Users', 'users', 'user', '/users');
-		}
-	);
+	function run(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Users', 'users', 'user', '/users');
+	}
 })();
