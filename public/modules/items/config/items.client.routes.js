@@ -9,32 +9,44 @@
 	function config($stateProvider) {
 		// Items state routing
 		$stateProvider
-			.state('listItems', {
+			.state('common.listItems', {
 				url: '/items',
 				views: {
-					'contentView': { templateUrl: 'modules/items/views/list-items.client.view.html' },
-					'sidebarView': { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+					'contentView': { 
+						templateUrl: 'modules/items/views/list-items.client.view.html',
+						controller: 'ItemsController',
+						controllerAs: 'vm'
+					}
 				}
 			})
-		.state('createItem', {
+		.state('common.createItem', {
 			url: '/items/create',
 			views: {
-				'contentView': { templateUrl: 'modules/items/views/create-item.client.view.html' },
-				'sidebarView': { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/items/views/create-item.client.view.html',
+					controller: 'ItemsController',
+					controllerAs: 'vm'
+				}
 			}
 		})
-		.state('viewItem', {
+		.state('common.viewItem', {
 			url: '/items/:itemId',
 			views: {
-				'contentView': { templateUrl: 'modules/items/views/view-item.client.view.html' }, 
-				'sidebarView': { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/items/views/view-item.client.view.html',
+					controller: 'ItemsController',
+					controllerAs: 'vm'
+				}
 			}
 		})
-		.state('editItem', {
+		.state('common.editItem', {
 			url: '/items/:itemId/edit',
 			views: {
-				'contentView': { templateUrl: 'modules/items/views/edit-item.client.view.html' },
-				'sidebarView': { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/items/views/edit-item.client.view.html',
+					controller: 'ItemsController',
+					controllerAs: 'vm'
+				}
 			}
 		});
 	}
