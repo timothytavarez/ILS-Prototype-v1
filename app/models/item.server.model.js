@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+	mongoosastic = require('mongoosastic'),
 	Schema = mongoose.Schema;
 
 /**
@@ -51,3 +52,14 @@ var ItemSchema = new Schema({
 });
 
 mongoose.model('Item', ItemSchema);
+ItemSchema.plugin(mongoosastic);
+
+// ItemSchema.createMapping(function(err, mapping){  
+//   if(err){
+//     console.log('error creating mapping (ignore this)');
+//     console.log(err);
+//   }else{
+//     console.log('mapping created!');
+//     console.log(mapping);
+//   }
+// });

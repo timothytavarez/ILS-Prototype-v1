@@ -13,7 +13,6 @@
     "angular-touch": "~1.4.3",
     "angular-bootstrap": "~0.13.1",
     "angular-ui-router": "~0.2.15",
-    "angular-ui-utils": "~3.0.0",
-    "jquery": "~2.1.4"
+    "angular-ui-utils": "~3.0.0"
   }
 }

@@ -1,14 +1,14 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-	<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<div id="wrapper" data-ng-show="authentication.user">
+<header data-ng-show="authentication.user" data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse">
+</header>
+<div data-ng-show="authentication.user">
 		<div ui-view="sidebarView">
-		</div>		
-	</div>
+		</div>
+</div>
 <div class="center-display">		
 	<div class="container-fluid" ui-view="contentView">
-		<div></div>
 	</div>
 </div>
 {% endblock %}

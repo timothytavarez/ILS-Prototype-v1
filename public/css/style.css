@@ -82,26 +82,3 @@ z-index: 1000;
     color: #fff;
     background: none;
 }
-.search-wrapper {
-    padding-top: 25px;
-}
-
-.search-background {
-    position: relative;
-    background-image: url('/img/we_scaled_me.png');
-    height: 200px;
-    width: 800px;
-    z-index: -2;
-    margin: 0 auto;
-}
-
-.search-bar {
-    position: relative;
-    top: 35%;
-    margin: 0 auto;
-    width: 600px;
-    height: 50px;
-    border: 1px solid rgb(217, 217, 217);
-    background-color: #fff;
-    padding-left: 50px;
-}
