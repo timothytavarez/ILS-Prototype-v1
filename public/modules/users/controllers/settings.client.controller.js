@@ -85,6 +85,7 @@
 		}
 		function httpError(response) {
 			vm.error = response.message;
+			console.log(vm.error);
 		}
 	}
 })();

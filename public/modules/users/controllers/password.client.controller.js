@@ -25,7 +25,9 @@
 		function askForPasswordReset() {
 			vm.success = vm.error = null;
 
-			$http.post('/auth/forgot', vm.credentials).success(function(response) {
+			$http
+				.post('/auth/forgot', vm.credentials)
+				.success(function(response) {
 				// Show user success message and clear form
 				vm.credentials = null;
 				vm.success = response.message;

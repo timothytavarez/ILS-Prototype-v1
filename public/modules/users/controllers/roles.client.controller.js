@@ -5,7 +5,7 @@
 		.module('users')
 		.controller('RolesController', RolesController);
 
-	function RolesController($stateParams, $location, Authentication, Roles) {
+	function RolesController($stateParams, $scope, $location, Authentication, Roles) {
 		var vm = this;
 
 		// Scope Variables
@@ -88,14 +88,18 @@
 
 
 		function initRole() {
-			vm.role = new Roles({
-				roleName: '',
-				desc: ''
-			});
+			vm.role = {};
+			vm.role.roleName = '';
+			vm.role.desc = '';
 		}
 
 		function create() {
-			var role = vm.role;
+			var role = new Roles({
+				roleName: vm.role.roleName,
+				desc: vm.role.desc
+			});
+
+			vm.role = role;
 
 			//Fill out the selected rights
 			for( var group, i = 0; i < vm.rightsPool.length; i++ ) {
@@ -156,6 +160,7 @@
 		}
 
 		function findOne() {
+			console.log($stateParams.roleId);
 			vm.role = Roles.get({ 
 				roleId: $stateParams.roleId
 			}, vm.initializeRightsPool);

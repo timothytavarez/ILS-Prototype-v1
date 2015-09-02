@@ -41,7 +41,6 @@ module.exports = {
 				'public/lib/angular-ui-validate/dist/validate.js',
 				'public/lib/angular-ui-indeterminate/dist/indeterminate.js',
 				'public/lib/angular-ui-uploader/dist/uploader.js'
-			//	'public/lib/jquery/dist/jquery.js'
 			]
 		},
 		css: [

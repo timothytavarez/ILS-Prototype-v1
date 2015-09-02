@@ -5,36 +5,48 @@
 	angular /*@ngInject*/
 		.module('users')
 		.config(config);
-	
+
 	function config($stateProvider) {
 		// Roles state routing
 		$stateProvider
-			.state('listRoles', {
+			.state('common.listRoles', {
 				url: '/roles',
 				views: {
-					'contentView': { templateUrl: 'modules/users/views/list-roles.client.view.html' },
-					'sidebarView' : { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+					'contentView': { 
+						templateUrl: 'modules/users/views/roles/list-roles.client.view.html',
+						controller: 'RolesController',
+						controllerAs: 'vm'
+					}
 				}
 			})
-		.state('createRole', {
+		.state('common.createRole', {
 			url: '/roles/create',
 			views: {
-				'contentView': { templateUrl: 'modules/users/views/create-role.client.view.html' },
-				'sidebarView' : { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/users/views/roles/create-role.client.view.html',
+					controller: 'RolesController',
+					controllerAs: 'vm'
+				}
 			}
 		})
-		.state('viewRole', {
+		.state('common.viewRole', {
 			url: '/roles/:roleId',
 			views: {
-				'contentView': { templateUrl: 'modules/users/views/view-role.client.view.html' },
-				'sidebarView' : { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/users/views/roles/view-role.client.view.html',
+					controller: 'RolesController',
+					controllerAs: 'vm'
+				}
 			}
 		})
-		.state('editRole', {
+		.state('common.editRole', {
 			url: '/roles/:roleId/edit',
 			views: {
-				'contentView': { templateUrl: 'modules/users/views/edit-role.client.view.html' },
-				'sidebarView' : { templateUrl: 'modules/core/views/sidebar.client.view.html' }
+				'contentView': { 
+					templateUrl: 'modules/users/views/roles/edit-role.client.view.html',
+					controller: 'RolesController',
+					controllerAs: 'vm'
+				}
 			}
 		});
 	}

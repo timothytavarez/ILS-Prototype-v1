@@ -9,21 +9,45 @@
 	function config($stateProvider) {
 		// Libraries state routing
 		$stateProvider
-			.state('listLibraries', {
+			.state('common.listLibraries', {
 				url: '/libraries',
-				templateUrl: 'modules/libraries/views/list-libraries.client.view.html'
+				views: {
+					'contentView': { 
+						templateUrl: 'modules/libraries/views/list-libraries.client.view.html',
+						controller: 'LibraryController',
+						controllerAs: 'vm'
+					}
+				}
 			})
-		.state('createLibrary', {
+		.state('common.createLibrary', {
 			url: '/libraries/create',
-			templateUrl: 'modules/libraries/views/create-library.client.view.html'
+			views: {
+				'contentView': { 
+					templateUrl: 'modules/libraries/views/create-library.client.view.html',
+					controller: 'LibraryController',
+					controllerAs: 'vm'
+				}
+			}
 		})
-		.state('viewLibrary', {
+		.state('common.viewLibrary', {
 			url: '/libraries/:libraryId',
-			templateUrl: 'modules/libraries/views/view-library.client.view.html'
+			views: {
+				'contentView': { 
+					templateUrl: 'modules/libraries/views/view-library.client.view.html',
+					controller: 'LibraryController',
+					controllerAs: 'vm'
+				}
+			}
 		})
-		.state('editLibrary', {
+		.state('common.editLibrary', {
 			url: '/libraries/:libraryId/edit',
-			templateUrl: 'modules/libraries/views/edit-library.client.view.html'
+			views: {
+				'contentView': { 
+					templateUrl: 'modules/libraries/views/edit-library.client.view.html',
+					controller: 'LibraryController',
+					controllerAs: 'vm'
+				}
+			}
 		});
 	}
 })();

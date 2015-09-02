@@ -1,17 +1,17 @@
 <fieldset>
   <label class="control-label" for="name">Role Name</label>
   <div class="controls">
-    <input type="text" data-ng-model="role.roleName" id="name" class="form-control" placeholder="Name" required>
+    <input type="text" data-ng-model="vm.role.roleName" id="name" class="form-control" placeholder="Name" required>
   </div>
   <label class="control-label" for="desc">Role Description</label>
   <div class="controls">
-    <input type="text" data-ng-model="role.desc" id="desc" class="form-control" placeholder="Description" required>
+    <input type="text" data-ng-model="vm.role.desc" id="desc" class="form-control" placeholder="Description" required>
   </div>
 </fieldset>
 <br>
 <fieldset>
   <accordion close-other="true">
-    <accordion-group data-ng-repeat="group in rightsPool | orderBy:'dispName'" is-open="status.open">
+    <accordion-group data-ng-repeat="group in vm.rightsPool | orderBy:'dispName'" is-open="status.open">
       <accordion-heading ng-click="status.open=!status.open">
         <div>
           {{group.dispName}}
@@ -21,8 +21,8 @@
         </div>
       </accordion-heading>
       <div  ng-repeat="right in group.rights">
-        <button type="button" class="btn btn-link" ng-click="toggleSelect(group, right)" >
-          <span class="glyphicon" ng-class="{'glyphicon-check': isSelected(right), 'glyphicon-unchecked': !isSelected(right)}"></span>
+        <button type="button" class="btn btn-link" ng-click="vm.toggleSelect(group, right)" >
+          <span class="glyphicon" ng-class="{'glyphicon-check': vm.isSelected(right), 'glyphicon-unchecked': !vm.isSelected(right)}"></span>
           <strong>{{right.name}}</strong> - {{right.desc}}
         </button>
       </div>

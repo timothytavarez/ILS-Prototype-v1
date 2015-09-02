@@ -1,0 +1,18 @@
+<section data-ng-init="vm.initRole()">
+	<div class="page-header">
+		<h1>New Role</h1>
+	</div>
+<div>
+
+	<div class="row">
+		<div class="col-md-7">
+			<div data-ng-show="vm.error" class="text-danger">
+				<strong data-ng-bind="vm.error"></strong>
+			</div>
+
+			<form class="form-horizontal" data-ng-submit="vm.create()" novalidate>
+				<div data-ng-include src='"modules/users/views/roles/role-form.client.view.html"'></div>
+			</form>
+		</div>
+	</div>
+</section>
