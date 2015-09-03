@@ -13,7 +13,7 @@ module.exports = {
 	assets: {
 		browserify: {
 			js: [
-				'app/models/rights/*.js'
+				'app/common/rights'
 			]
 		},
 		lib: {
@@ -23,6 +23,7 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.css'
 			],
 			js: [
+				'public/common/bundle.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-bootstrap/ui-bootstrap.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
