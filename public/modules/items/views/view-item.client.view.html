@@ -3,7 +3,7 @@
 		<h1 data-ng-bind="vm.item.title"></h1>
 	</div>
 
-	<div ><!-- class="pull&#45;right" -->
+	<div>
     <div class="list-group">
 			<label class="control-label" >Type</label>
 			<h4 class="list-group-item-heading" data-ng-bind="vm.item.itemType"></h4>
@@ -18,20 +18,16 @@
 			</div>
     </div>
 
-		<!-- <a class="btn btn&#45;primary" data&#45;ng&#45;disabled="!vm.canHold()" data&#45;ng&#45;click="vm.hold()">Place On Hold</a> -->
 		<a class="btn btn-primary" data-ng-hide="!vm.canHold()" data-ng-click="vm.hold()">Place On Hold</a>
 		<br>
-		<!-- <a class="btn btn&#45;primary" data&#45;ng&#45;disabled="!vm.canCheckOut()" data&#45;ng&#45;click="vm.checkOut();">Check Out</a> -->
 		<a class="btn btn-primary" data-ng-hide="!vm.canCheckOut()" data-ng-click="vm.checkOut();">Check Out</a>
 		<br>
-		<!-- <a class="btn btn&#45;primary" data&#45;ng&#45;disabled="!vm.canCheckIn()"  data&#45;ng&#45;click="vm.checkIn();">Check In</a> -->
 		<a class="btn btn-primary" data-ng-hide="!vm.canCheckIn()" data-ng-click="vm.checkIn();">Check In</a>
 		<br>
-		<!-- <a class="btn btn&#45;primary" data&#45;ng&#45;disabled="!vm.canRenew()"  data&#45;ng&#45;click="vm.renew();">Renew Book</a> -->
 		<a class="btn btn-primary" data-ng-hide="!vm.canRenew()" data-ng-click="vm.renew();">Renew Book</a>
 		<br>
 	
-		<a class="btn btn-primary" ng-href="/#!/items/{{vm.item._id}}/edit">
+		<a class="btn btn-primary" ui-sref="common.editItem({itemId:vm.item._id})">
 			<span class="glyphicon glyphicon-edit"></span>
 		</a>
 		<a class="btn btn-primary" data-ng-click="vm.remove();">
@@ -41,12 +37,4 @@
 	<div data-ng-show="error" class="text-center text-danger">
 		<strong data-ng-bind="error"></strong>
 	</div>
-	<!-- <small> -->
-	<!-- 	<em class="text&#45;muted"> -->
-	<!-- 		Posted on -->
-	<!-- 		<span data&#45;ng&#45;bind="item.created | date:'mediumDate'"></span> -->
-	<!-- 		by -->
-	<!-- 		<span data&#45;ng&#45;bind="item.user.displayName"></span> -->
-	<!-- 	</em> -->
-	<!-- </small> -->
 </section>
