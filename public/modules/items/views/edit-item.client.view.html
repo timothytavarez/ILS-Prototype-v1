@@ -1,26 +1,26 @@
-<section data-ng-controller="ItemsController" data-ng-init="findOne()">
+<section data-ng-controller="ItemsController" data-ng-init="vm.findOne()">
     <div class="page-header">
         <h1>Edit Item</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+        <form class="form-horizontal" data-ng-submit="vm.update()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="type">Item Type</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="item.itemType" id="type" class="form-control" placeholder="Type" required>
+                        <input type="text" data-ng-model="vm.item.itemType" id="type" class="form-control" placeholder="Type" required>
                     </div>
                     <label class="control-label" for="title">Title</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="item.title" id="title" class="form-control" placeholder="Title" required>
+                        <input type="text" data-ng-model="vm.item.title" id="title" class="form-control" placeholder="Title" required>
                     </div>
                     <label class="control-label" for="author">Author</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="item.author" id="author" class="form-control" placeholder="Author" required>
+                        <input type="text" data-ng-model="vm.item.author" id="author" class="form-control" placeholder="Author" required>
                     </div>
                     <label class="control-label" for="desc">Description</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="item.desc" id="desc" class="form-control" placeholder="Description" required>
+                        <input type="text" data-ng-model="vm.item.desc" id="desc" class="form-control" placeholder="Description" required>
                     </div>
                 </div>
                 <div class="form-group">

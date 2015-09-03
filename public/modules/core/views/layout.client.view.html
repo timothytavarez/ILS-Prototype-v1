@@ -1,0 +1,29 @@
+<!-- <div class="container&#45;fluid"> -->
+<div class="row" data-ng-show="vm.authentication.user">
+	<!-- <header data&#45;ng&#45;show="authentication.user" data&#45;ng&#45;include="'/modules/core/views/header.client.view.html'" class="navbar navbar&#45;fixed&#45;top navbar&#45;inverse"></header> -->
+	<div ui-view="navbarView">
+	</div>
+</div> <!-- End of Navbar Row -->
+
+<div class="row">
+	<div class="col-lg-3 col-md-4 pull-left hidden-sm hidden-xs" id="wrapper" data-ng-show="vm.authentication.user">
+		<div ui-view="sidebarView">
+		</div>		
+		</div>
+
+		<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right">		
+			<div ui-view="contentView">
+			</div>
+			</div>
+		</div> <!-- End of Sidebar and Content Row -->
+
+		<div data-ng-show="vm.authentication.user" class="row">
+			<div class="container">
+				<div class="footer navbar-bottom">
+					<div ui-view="footerView">
+					</div>
+				</div>
+			</div>
+		</div> <!-- End of Footer Row -->
+
+	</div>

@@ -1,16 +1,16 @@
-<section data-ng-controller="AdministrationController" data-ng-init="find()">
+<section  data-ng-init="vm.find()">
   <div class="page-header">
     <h1>users</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}" class="list-group-user">
+    <a data-ng-repeat="user in vm.users" ui-sref="common.viewUser({userId:user._id})" class="list-group-user">
       <h4 class="list-group-user-heading" data-ng-bind="user.lastName + ', ' + user.firstName + ' (' + user.username + ')'"></h4>
       <small class="list-group-user-text">
         Created on <span data-ng-bind="user.created | date:'medium'"></span>
       </small>
     </a>
   </div>
-  <div class="alert alert-warning text-center" data-ng-hide="!users.$resolved || users.length">
+  <div class="alert alert-warning text-center" data-ng-hide="!vm.users.$resolved || vm.users.length">
     You do not have permission to view other users
   </div>
 </section>

@@ -5,18 +5,19 @@
 		.module('users')
 		.controller('AdministrationController', AdministrationController);
 
-	function AdministrationController($scope, $stateParams, $http, Authentication, Users) {
-		$scope.authentication = Authentication;
+	function AdministrationController($stateParams, $http, Authentication, Users) {
+		var vm = this;
 
-		$scope.find = find; 
-		$scope.findOne = findOne; 
+		vm.authentication = Authentication;
+		vm.find = find; 
+		vm.findOne = findOne; 
 
 		function find() {
-			$scope.users = Users.query({});
+			vm.users = Users.query({});
 		}
 
 		function  findOne() {
-			$scope.user = Users.get({
+			vm.user = Users.get({
 				userId: $stateParams.userId
 			});
 		}

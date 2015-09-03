@@ -1,48 +1,40 @@
-<section data-ng-controller="ItemsController" data-ng-init="findOne()">
+<section data-ng-controller="ItemsController" data-ng-init="vm.findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="item.title"></h1>
+		<h1 data-ng-bind="vm.item.title"></h1>
 	</div>
 
-	<div ><!-- class="pull&#45;right" -->
+	<div>
     <div class="list-group">
 			<label class="control-label" >Type</label>
-			<h4 class="list-group-item-heading" data-ng-bind="item.itemType"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="vm.item.itemType"></h4>
 			<label class="control-label" >Title</label>
-			<h4 class="list-group-item-heading" data-ng-bind="item.title"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="vm.item.title"></h4>
 			<label class="control-label" >Author</label>
-			<h4 class="list-group-item-heading" data-ng-bind="item.author"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="vm.item.author"></h4>
 			<label class="control-label" >Description</label>
-			<h4 class="list-group-item-heading" data-ng-bind="item.desc"></h4>
-			<div data-ng-show="item.isCheckedOut">
+			<h4 class="list-group-item-heading" data-ng-bind="vm.item.desc"></h4>
+			<div data-ng-show="vm.item.isCheckedOut">
 				<label class="control-label" >Item is Checked Out</label>
 			</div>
     </div>
 
-		<a class="btn btn-primary" data-ng-disabled="!canHold()" data-ng-click="hold()">Place On Hold</a>
+		<a class="btn btn-primary" data-ng-hide="!vm.canHold()" data-ng-click="vm.hold()">Place On Hold</a>
 		<br>
-		<a class="btn btn-primary" data-ng-disabled="!canCheckOut()" data-ng-click="checkOut();">Check Out</a>
+		<a class="btn btn-primary" data-ng-hide="!vm.canCheckOut()" data-ng-click="vm.checkOut();">Check Out</a>
 		<br>
-		<a class="btn btn-primary" data-ng-disabled="!canCheckIn()"  data-ng-click="checkIn();">Check In</a>
+		<a class="btn btn-primary" data-ng-hide="!vm.canCheckIn()" data-ng-click="vm.checkIn();">Check In</a>
 		<br>
-		<a class="btn btn-primary" data-ng-disabled="!canRenew()"  data-ng-click="renew();">Renew Book</a>
+		<a class="btn btn-primary" data-ng-hide="!vm.canRenew()" data-ng-click="vm.renew();">Renew Book</a>
 		<br>
 	
-		<a class="btn btn-primary" ng-href="/#!/items/{{item._id}}/edit">
+		<a class="btn btn-primary" ui-sref="common.editItem({itemId:vm.item._id})">
 			<span class="glyphicon glyphicon-edit"></span>
 		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
+		<a class="btn btn-primary" data-ng-click="vm.remove();">
 			<span class="glyphicon glyphicon-trash"></span>
 		</a>
 	</div>
 	<div data-ng-show="error" class="text-center text-danger">
 		<strong data-ng-bind="error"></strong>
 	</div>
-	<!-- <small> -->
-	<!-- 	<em class="text&#45;muted"> -->
-	<!-- 		Posted on -->
-	<!-- 		<span data&#45;ng&#45;bind="item.created | date:'mediumDate'"></span> -->
-	<!-- 		by -->
-	<!-- 		<span data&#45;ng&#45;bind="item.user.displayName"></span> -->
-	<!-- 	</em> -->
-	<!-- </small> -->
 </section>

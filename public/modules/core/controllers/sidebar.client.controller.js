@@ -5,8 +5,10 @@
 		.module('core')
 		.controller('SidebarController', SidebarController);
 	
-	function SidebarController($scope, Authentication) {
-		// This provides Authentication context.
-		$scope.authentication = Authentication;
+	function SidebarController(Authentication) {
+		var vm = this;
+
+		// this provides authentication context.
+		vm.authentication = Authentication;
 	}
 })();

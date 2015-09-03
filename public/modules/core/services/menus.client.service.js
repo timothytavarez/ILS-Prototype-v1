@@ -7,6 +7,7 @@
 		.service('Menus', Menus );
 
 	function Menus() {
+		/*jshint validthis:true*/
 		// Define a set of default roles
 		this.defaultRoles = ['*'];
 

@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 			}
 		},
 		browserify: {
-			'./public/common/rights.client.bundle.js': ['./app/common/rights']
+			'./public/common/bundle.js': [ '<%= browserifyFiles %>' ]
 		},
 		nodemon: {
 			dev: {
@@ -157,12 +157,13 @@ module.exports = function(grunt) {
 		var init = require('./config/init')();
 		var config = require('./config/config');
 
+		grunt.config.set('browserifyFiles', config.assets.browserify.js );
 		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
 		grunt.config.set('applicationCSSFiles', config.assets.css);
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'browserify', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'loadConfig', 'browserify', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
@@ -174,7 +175,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'browserify', 'ngAnnotate', 'uglify', 'cssmin']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

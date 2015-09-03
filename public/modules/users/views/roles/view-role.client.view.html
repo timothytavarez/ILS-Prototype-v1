@@ -1,19 +1,19 @@
-<section data-ng-controller="RolesController" data-ng-init="findOne()">
+<section data-ng-init="vm.findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="role.roleName"></h1>
+		<h1 data-ng-bind="vm.role.roleName"></h1>
 	</div>
 
 	<div ><!-- class="pull&#45;right" -->
     <div class="list-group">
 			<label class="control-label" >Name</label>
-			<h4 class="list-group-item-heading" data-ng-bind="role.roleName"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="vm.role.roleName"></h4>
 			<br>
 			<label class="control-label" >Description</label>
-			<h4 class="list-group-item-heading" data-ng-bind="role.desc"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="vm.role.desc"></h4>
 			<br>
 			<label class="control-label" >Rights</label>
 			<ul>
-				<li data-ng-repeat="group in rightsPool" data-ng-if="group.totalSelected > 0">
+				<li data-ng-repeat="group in vm.rightsPool" data-ng-if="group.totalSelected > 0">
 					<h4 class="list-group-item-heading">{{group.dispName}}</h4>
 					<ul>
 						<li data-ng-repeat="right in group.rights" data-ng-if="right.selected">
@@ -25,14 +25,14 @@
 
     </div>
 
-		<a class="btn btn-primary" ng-href="/#!/roles/{{role._id}}/edit">
+		<a class="btn btn-primary" ui-sref="common.editRole({roleId:vm.role._id})">
 			<span class="glyphicon glyphicon-edit"></span>
 		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
+		<a class="btn btn-primary" data-ng-click="vm.remove();">
 			<span class="glyphicon glyphicon-trash"></span>
 		</a>
 	</div>
-	<div data-ng-show="error" class="text-center text-danger">
-		<strong data-ng-bind="error"></strong>
+	<div data-ng-show="vm.error" class="text-center text-danger">
+		<strong data-ng-bind="vm.error"></strong>
 	</div>
 </section>

@@ -6,52 +6,52 @@
 		.module('libraries')
 		.controller('LibrariesController', LibrariesController );
 
-	function LibrariesController($scope, $stateParams, $location, Authentication, Libraries) {
-		$scope.authentication = Authentication;
+	function LibrariesController($stateParams, $location, Authentication, Libraries) {
+		var vm = this;
 
-		$scope.create = create;
-		$scope.find = find;
-		$scope.findOne = findOne;
-		$scope.update = update;
-		$scope.remove = remove;
+		vm.authentication = Authentication;
+
+		vm.create = create;
+		vm.find = find;
+		vm.findOne = findOne;
+		vm.update = update;
+		vm.remove = remove;
 
 
 		function create() {
-			var library = new Libraries ({
-				name: this.name
-			});
+			var library = new Libraries({ name: vm.name });
 
 			// Redirect after save
 			library.$save(function(response) {
 				$location.path('libraries/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				vm.name = '';
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
 		// Find a list of Libraries
 		function find() {
-			$scope.libraries = Libraries.query();
+			vm.libraries = Libraries.query();
 		}
 
 		// Find existing Library
 		function findOne() {
-			$scope.library = Libraries.get({ 
+			vm.library = Libraries.get({ 
 				libraryId: $stateParams.libraryId
 			});
 		}
 
 		// Update existing Library
 		function update() {
-			var library = $scope.library;
+			var library = vm.library;
 
 			library.$update(function() {
 				$location.path('libraries/' + library._id);
 			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
+				vm.error = errorResponse.data.message;
 			});
 		}
 
@@ -60,13 +60,13 @@
 			if ( library ) { 
 				library.$remove();
 
-				for (var i in $scope.libraries) {
-					if ($scope.libraries [i] === library) {
-						$scope.libraries.splice(i, 1);
+				for (var i in vm.libraries) {
+					if (vm.libraries [i] === library) {
+						vm.libraries.splice(i, 1);
 					}
 				}
 			} else {
-				$scope.library.$remove(function() {
+				vm.library.$remove(function() {
 					$location.path('libraries');
 				});
 			}

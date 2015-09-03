@@ -95,8 +95,6 @@ exports.list = function(req, res) {
 exports.roleByID = function(req, res, next, id) { 
 	// var populateQuery = [
 	// 	{path:'roleName'}, 
-	// 	{path:'heldFor', select: User.whitelistedFields()},
-	// 	{path:'checkedOutBy', select: User.whitelistedFields()}
 	// ];
 	Role.findById(id)/* .populate(populateQuery) */.exec(function(err, role) {
 		if (err) return next(err);

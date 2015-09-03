@@ -5,48 +5,52 @@
 		.module('users')
 		.controller('PasswordController', PasswordController);
 
-	function PasswordController($scope, $stateParams, $http, $location, Authentication) {
-		$scope.authentication = Authentication;
+	function PasswordController($stateParams, $http, $location, Authentication) {
+		var vm = this;
+
+		vm.authentication = Authentication;
 
 		// Submit forgotten password account id
-		$scope.askForPasswordReset = askForPasswordReset;
+		vm.askForPasswordReset = askForPasswordReset;
 		// Change user password
-		$scope.resetUserPassword = resetUserPassword;
+		vm.resetUserPassword = resetUserPassword;
 
 
 		//If user is signed in then redirect back home
-		if ($scope.authentication.user) {
+		if (vm.authentication.user) {
 			$location.path('/');
 		}
 
 		// Submit forgotten password account id
 		function askForPasswordReset() {
-			$scope.success = $scope.error = null;
+			vm.success = vm.error = null;
 
-			$http.post('/auth/forgot', $scope.credentials).success(function(response) {
+			$http
+				.post('/auth/forgot', vm.credentials)
+				.success(function(response) {
 				// Show user success message and clear form
-				$scope.credentials = null;
-				$scope.success = response.message;
+				vm.credentials = null;
+				vm.success = response.message;
 
 			}).error(function(response) {
 				// Show user error message and clear form
-				$scope.credentials = null;
-				$scope.error = response.message;
+				vm.credentials = null;
+				vm.error = response.message;
 			});
 		}
 
 		// Change user password
 		function resetUserPassword() {
-			$scope.success = $scope.error = null;
+			vm.success = vm.error = null;
 			$http
-				.post('/auth/reset/' + $stateParams.token, $scope.passwordDetails)
+				.post('/auth/reset/' + $stateParams.token, vm.passwordDetails)
 				.success(success)
 				.error(error);
 
 
 			function success(response) {
 				// If successful show success message and clear form
-				$scope.passwordDetails = null;
+				vm.passwordDetails = null;
 
 				// Attach user profile
 				Authentication.user = response;
@@ -56,7 +60,7 @@
 			}
 
 			function error(response) {
-				$scope.error = response.message;
+				vm.error = response.message;
 			}
 		}
 	}

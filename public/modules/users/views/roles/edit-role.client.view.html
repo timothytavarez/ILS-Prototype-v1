@@ -1,0 +1,17 @@
+<section data-ng-init="vm.findOne()">
+	<div class="page-header">
+		<h1>Edit Role</h1>
+	</div>
+
+		<div class="row">
+			<div class="col-md-7">
+				<div data-ng-show="vm.error" class="text-danger">
+					<strong data-ng-bind="vm.error"></strong>
+				</div>
+
+				<form class="form-horizontal" data-ng-submit="vm.update()" novalidate>
+					<div data-ng-include src='"modules/users/views/roles/role-form.client.view.html"'></div>
+				</form>
+			</div>
+		</div>
+</section>
