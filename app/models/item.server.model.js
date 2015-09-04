@@ -15,17 +15,19 @@ var ItemSchema = new Schema({
 		type: String,
 		trim: true,
 		required: 'Please select Item type',
+		es_indexed: true
 	},
 	title: {
 		type: String,
 		default: '',
 		required: 'Please fill Item title',
-		trim: true
+		trim: true,
+		es_indexed: true
 	},
-	author: String,
-	desc: String,
-	pub: String,
-	pubDate: Date,
+	author: {type: String, es_indexed: true},
+	desc: {type: String, es_indexed: true},
+	pub: {type: String, es_indexed: true},
+	pubDate: {type: Date, es_indexed: true},
 	image: {},
 	isOnHold: {
 		type: Boolean,
