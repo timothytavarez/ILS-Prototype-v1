@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 					nodeArgs: ['--debug'],
 					ext: 'js,html',
 					watch: watchFiles.serverViews.concat(watchFiles.serverJS),
-					ignore: ['public/lib/*', 'node_modules/*']
+					ignore: ['public/**', 'node_modules/**']
 				}
 			}
 		},
