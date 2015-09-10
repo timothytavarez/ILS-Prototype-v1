@@ -2,12 +2,12 @@
 
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
-    host: process.env.IP + ':' + 9200,
+    host: '191.239.52.231' + ':' + '9200',
     log: 'trace'
 });
 
 client.ping({
-  requestTimeout: 30000,
+  requestTimeout: 3000,
 
   // undocumented params are appended to the query string
   hello: 'elasticsearch'
@@ -18,3 +18,13 @@ client.ping({
     console.log('All is well');
   }
 });
+
+
+// client.search({
+//   index: 'items',
+//   body: {
+//     'query': {
+//       'match_all': {}
+//       }
+//     }
+//   });

@@ -53,8 +53,13 @@ var ItemSchema = new Schema({
 	}
 });
 
+
+ItemSchema.plugin(mongoosastic, {
+	host: '191.239.52.231:9200',
+	curlDebug: true
+});
+
 mongoose.model('Item', ItemSchema);
-ItemSchema.plugin(mongoosastic);
 
 // ItemSchema.createMapping(function(err, mapping){  
 //   if(err){
