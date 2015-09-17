@@ -55,18 +55,20 @@ var ItemSchema = new Schema({
 
 
 ItemSchema.plugin(mongoosastic, {
-	host: '191.239.52.231:9200',
-	curlDebug: true
+	hosts: [ '191.239.52.231:9200'
+	]
 });
 
-mongoose.model('Item', ItemSchema);
+var Item = mongoose.model('Item', ItemSchema),
+stream = Item.synchronize(),
+count = 0;
 
-// ItemSchema.createMapping(function(err, mapping){  
-//   if(err){
-//     console.log('error creating mapping (ignore this)');
-//     console.log(err);
-//   }else{
-//     console.log('mapping created!');
-//     console.log(mapping);
-//   }
-// });
+stream.on('data', function(err, doc){
+  count++;
+});
+stream.on('close', function(){
+  console.log('indexed ' + count + ' documents!');
+});
+stream.on('error', function(err){
+  console.log(err);
+});

@@ -40,7 +40,9 @@ module.exports = {
 				'public/lib/angular-ui-mask/dist/mask.js',
 				'public/lib/angular-ui-validate/dist/validate.js',
 				'public/lib/angular-ui-indeterminate/dist/indeterminate.js',
-				'public/lib/angular-ui-uploader/dist/uploader.js'
+				'public/lib/angular-ui-uploader/dist/uploader.js',
+				'public/lib/elasticsearch/elasticsearch.js',
+				'public/lib/elasticsearch/elasticsearch.angular.js'
 			]
 		},
 		css: [
