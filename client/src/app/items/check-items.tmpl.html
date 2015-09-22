@@ -1,0 +1,37 @@
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3"> 
+		<section>
+			<h1>Patron Information</h1>
+			<pre class="pull-left">img</pre>
+			<p> Name, link to profile, how many books checked out.  Over due books? </p>
+		</section>
+
+		<hr>
+
+		<section data-ng-init="vm.find()">
+			<h1>Item List</h1>
+			<a data-ng-repeat="item in vm.items" ui-sref="common.viewItem({itemId:item._id})" class="list-group-item">
+				<h4 class="list-group-item-heading" data-ng-bind="item.title"></h4>
+				<h4 class="list-group-item-heading" data-ng-bind="item.author"></h4>
+				<small class="list-group-item-text">
+					Created on <span data-ng-bind="item.created | date:'medium'"></span>
+				</small>
+			</a>
+
+			<section>
+			<!-- <section ng&#45;show="vm.totalItems > vm.itemsPerPage"> -->
+				<!-- <hr> -->
+				<pagination direction-links="true" num-pages="vm.getPageCount()" rotate="false" items-per-page="vm.itemsPerPage" max-size="vm.maxVisiblePages" total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm"></pagination>
+			<section>
+		</section>
+
+		<hr>
+
+		<section>
+			<h1>Item Context Actions</h1>
+			<p> Select All, Check Out Selected, Check In Selected, Hold Selected, Renew Selected </p>
+		</section>
+	</div>
+</div>
+

@@ -1,8 +1,19 @@
+hr {
+	border: none;
+	height: 1px;
+	color: #000;
+	background-color: #000;
+}
 .header {
     background-color: white;
     height: 15%;
     width: 100%;
     display: block;
+}
+
+
+.page-body {
+	margin-top: 55px; // pushes the content, sidebar, and footer below the navbar
 }
 
 .navbar-default .navbar-nav > .active > a, 

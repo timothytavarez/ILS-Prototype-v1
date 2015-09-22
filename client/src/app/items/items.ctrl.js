@@ -27,6 +27,36 @@
 		vm.update = update;
 		vm.remove = remove;  
 
+		//Pagination Bindings
+		vm.maxVisiblePages = 5;
+		vm.currentPage = 1;
+		vm.totalItems = 100;
+		vm.itemsPerPage = 5;
+		vm.setPage = setPage;
+		vm.getPageCount = getPageCount;
+
+		function setPage(pageNum) {
+
+			var pageCount = getPageCount();
+
+			//Sets current Page whil respecting the upper and lower bounds
+			if(pageNum > 0) {
+				vm.currentPage = pageNum % pageCount;
+			}
+			else {
+				vm.currentPage = pageCount + pageNum;
+			} 
+		}
+
+		function getPageCount() {
+			// TODO: assert itemsPerPage > 0
+
+			// I could just ceil here instead of floor
+			// Then I wouldn't have to + 1... 
+			// But Idk if it will confuse people later
+			return Math.floor(vm.totalItems / vm.itemsPerPage) + 1; 
+		}
+
 
 		function canHold() {
 			if( vm.item.isOnHold ) {

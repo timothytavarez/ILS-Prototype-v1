@@ -20,6 +20,16 @@
 					}
 				}
 			})
+			.state('common.itemCheck', {
+				url: '/itemCheck',
+				views: {
+					'contentView': { 
+						templateUrl: 'src/app/items/check-items.tmpl.html',
+						controller: 'ItemsController',
+						controllerAs: 'vm'
+					}
+				}
+			})
 		.state('common.createItem', {
 			url: '/items/create',
 			views: {
@@ -55,7 +65,8 @@
 	function run(Menus) {
 		// Set top bar menu items
 		Menus.addMenuItem('topbar', 'items', 'items', 'dropdown', '/items');
-		Menus.addSubMenuItem('topbar', 'items', 'list items', 'items');
-		Menus.addSubMenuItem('topbar', 'items', 'new item', 'items/create');
+		Menus.addSubMenuItem('topbar', 'items', 'New Item', 'items/create');
+		Menus.addSubMenuItem('topbar', 'items', 'List Items', 'items');
+		Menus.addSubMenuItem('topbar', 'items', 'Check Items', 'itemCheck');
 	}
 })();

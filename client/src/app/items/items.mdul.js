@@ -2,5 +2,7 @@
 	'use strict';
 
 	angular
-		.module('items', []);
+		.module('items', [
+				"ui.bootstrap.pagination"
+		]);
 })();
