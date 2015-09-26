@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+	mongoosastic = require('mongoosastic'),
 	Schema = mongoose.Schema;
 
 /**
@@ -14,11 +15,13 @@ var LibrarySchema = new Schema({
 		type: String,
 		default: '',
 		required: 'Please fill Library name',
-		trim: true
+		trim: true,
+		es_indexed: true
 	},
 	created: {
 		type: Date,
-		default: Date.now
+		default: Date.now,
+		es_indexed: true
 	},
 	user: {
 		type: Schema.ObjectId,
@@ -27,3 +30,4 @@ var LibrarySchema = new Schema({
 });
 
 mongoose.model('Library', LibrarySchema);
+LibrarySchema.plugin(mongoosastic);

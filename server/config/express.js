@@ -15,9 +15,7 @@ var fs = require('fs'),
 	cookieParser = require('cookie-parser'),
 	helmet = require('helmet'),
 	passport = require('passport'),
-	mongoStore = require('connect-mongo')({
-		session: session
-	}),
+	MongoDBStore = require('connect-mongodb-session')(session),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
@@ -86,14 +84,27 @@ module.exports = function(db) {
 	// CookieParser should be above session
 	app.use(cookieParser());
 
-	// Express MongoDB session storage
+
+	// // Express MongoDB session storage
+	// app.use(session({
+	// 	saveUninitialized: true,
+	// 	resave: true,
+	// 	secret: config.sessionSecret,
+	// 	store: new MongoDBStore({
+	// 		db: db.connection.db,
+	// 		collection: config.sessionCollection
+	// 	})
+	// }));
+	
+	
+		// Express MongoDB session storage
 	app.use(session({
 		saveUninitialized: true,
 		resave: true,
 		secret: config.sessionSecret,
-		store: new mongoStore({
-			db: db.connection.db,
-			collection: config.sessionCollection
+		store: new MongoDBStore({
+			uri: 'mongodb://appDev:23wesdxc%40#WESDXC@musedev01.cloudapp.net:27017/museDev',
+			collection: 'sessions'
 		})
 	}));
 
