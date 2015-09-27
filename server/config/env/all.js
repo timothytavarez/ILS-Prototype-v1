@@ -53,7 +53,7 @@ module.exports = {
 			css: [
 				'client/src/vendor/bootstrap/dist/css/bootstrap.css',
 				'client/src/vendor/bootstrap/dist/css/bootstrap-theme.css',
-				'client/src/vendor/font-awesome/css/font-awesome.css',
+				'client/src/vendor/font-awesome/css/font-awesome.css'
 			],
 			js: [
 				'client/src/vendor/jquery/dist/jquery.js',
@@ -84,7 +84,7 @@ module.exports = {
 		css: [
 			'client/src/app/**/css/*.css',
 			'client/src/common/**/css/*.css',
-			'client/assets/css/*.css',
+			'client/assets/css/*.css'
 		],
 
 		js: [

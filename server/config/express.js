@@ -84,20 +84,7 @@ module.exports = function(db) {
 	// CookieParser should be above session
 	app.use(cookieParser());
 
-
-	// // Express MongoDB session storage
-	// app.use(session({
-	// 	saveUninitialized: true,
-	// 	resave: true,
-	// 	secret: config.sessionSecret,
-	// 	store: new MongoDBStore({
-	// 		db: db.connection.db,
-	// 		collection: config.sessionCollection
-	// 	})
-	// }));
-	
-	
-		// Express MongoDB session storage
+	// Express MongoDB session storage
 	app.use(session({
 		saveUninitialized: true,
 		resave: true,
