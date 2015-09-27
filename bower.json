@@ -1,19 +1,19 @@
 {
-  "name": "muse",
-  "version": "0.0.1",
-  "description": "Modern SaaS Library Solution using the MEAN stack.",
+  "name": "angular-kickstart",
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "angular": "~1.4.3",
-    "angular-animate": "~1.4.3",
-    "angular-cookies": "~1.4.3",
-    "angular-mocks": "~1.4.3",
-    "angular-resource": "~1.4.3",
-    "angular-sanitize": "~1.4.3",
-    "angular-touch": "~1.4.3",
-    "angular-bootstrap": "~0.13.1",
+    "angular": "~1.4.6",
+    "angular-animate": "~1.4.6",
+    "angular-cookies": "~1.4.6",
+    "angular-resource": "~1.4.6",
+    "angular-sanitize": "~1.4.6",
+    "angular-touch": "~1.4.6",
+    "angular-bootstrap": "~0.13.4",
     "angular-ui-router": "~0.2.15",
     "angular-ui-utils": "~3.0.0",
     "jquery": "~2.1.4"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.6"
   }
 }

@@ -1,0 +1,17 @@
+<section data-ng-controller="HomeController">
+<div class="box">
+  <div class="container-4">
+    <input type="search" id="search" placeholder="Search..." />
+    <button class="icon"><i class="fa fa-search"></i></button>
+  </div>
+</div>
+
+<div ng-controller="QueryController">
+    <div>
+      <p>Test</p>
+        <table>
+          <tr ng-repeat="item in hits">
+          <td>{{item['_source']['title']}}</td></tr>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,121 @@
+hr {
+	border: none;
+	height: 1px;
+	color: #000;
+	background-color: #000;
+}
+.header {
+    background-color: white;
+    height: 15%;
+    width: 100%;
+    display: block;
+}
+
+
+.page-body {
+	margin-top: 55px; // pushes the content, sidebar, and footer below the navbar
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .open > a {
+		color: black;
+		background-image: linear-gradient(to bottom, #797B86 0px, #585A6B  100%)
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .open > a {
+    color: white;
+}
+
+
+.center-display {
+    background-color: white;
+    /* display: inline-block; */
+    /* position: fixed; */
+    padding: 30px 0 0 0;
+    height: 100%;
+    left: 250px;
+}
+
+
+.left-sidebar {
+/* display: block; */
+/* position: fixed; */
+/* float: left; */
+/* width: 250px; */
+background: #333;
+color: white;
+height: auto;
+/* height: 100vh; */
+z-index: 1000;
+
+}
+
+.sidebar-nav {
+    /* position: absolute; */
+    top: 0;
+    /* width: 250px; */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 40px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+/* .sidebar-nav > .sidebar-brand a { */
+/*     color: #999999; */
+/* } */
+
+/* .sidebar-nav > .sidebar-brand a:hover { */
+/*     color: #fff; */
+/*     background: none; */
+/* } */
+
+/* .search-wrapper { */
+/*     padding-top: 25px; */
+/* } */
+/*  */
+/* .search-background { */
+/*     position: relative; */
+/*     background-image: url('/img/we_scaled_me.png'); */
+/*     height: 200px; */
+/*     width: 800px; */
+/*     z-index: -2; */
+/*     margin: 0 auto; */
+/* } */
+/*  */
+/* .search-bar { */
+/*     position: relative; */
+/*     top: 35%; */
+/*     margin: 0 auto; */
+/*     width: 600px; */
+/*     height: 50px; */
+/*     border: 1px solid rgb(217, 217, 217); */
+/*     background-color: #fff; */
+/*     padding-left: 50px; */
+/* } */

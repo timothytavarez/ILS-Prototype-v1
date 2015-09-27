@@ -5,7 +5,10 @@
 *~
 **/*~
 node_modules/*
-public/lib/*
+client/src/vendor/*
+build/*
+!build/*.config.js
+maps/*
 *.log
 **/*.log
 .idea

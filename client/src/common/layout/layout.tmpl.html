@@ -1,0 +1,26 @@
+<!-- <div class="container&#45;fluid"> -->
+<div class="row" data-ng-show="vm.authentication.user">
+	<div ui-view="navbarView">
+	</div>
+</div> <!-- End of Navbar Row -->
+
+<div class="page-body row">
+	<div class="col-lg-3 col-md-4 pull-left hidden-sm hidden-xs" id="wrapper" data-ng-show="vm.authentication.user">
+		<div ui-view="sidebarView">
+		</div>		
+	</div>
+
+	<div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 pull-right">		
+		<div ui-view="contentView">
+		</div>
+	</div> <!-- End of Sidebar and Content Row -->
+
+	<div data-ng-show="vm.authentication.user" class="row">
+		<div class="container">
+			<div class="footer navbar-bottom">
+				<div ui-view="footerView">
+				</div>
+			</div>
+		</div>
+	</div> <!-- End of Footer Row -->
+</div>
